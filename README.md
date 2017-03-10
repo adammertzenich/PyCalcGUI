@@ -10,15 +10,9 @@ Current Imports:
 
 <p>
 
-Tkinter<br />Future Division<br />Math<br />Random<br />
+Tkinter <br />
+Future Division<br />
+Math<br />
+Random<br />
 
 </p>
-
-/*
-<ol>
-<li>Tkinter</li>
-<li>Future Division</li>
-<li>Math</li>
-<li>Random</li>
-</ol>
-*/
