@@ -66,7 +66,7 @@ Changelog:
 '''
 from __future__ import division
 from Tkinter import *
-import Tkinter
+import Tkinter,math,random
 
 
 ####
