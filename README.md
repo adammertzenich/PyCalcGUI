@@ -8,7 +8,9 @@ My first large gui project.
 
 Current Imports:
 
+<p>
 Tkinter
 Future Division
 Math
 Random
+</p>
