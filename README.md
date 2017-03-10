@@ -1,2 +1,5 @@
-# PyCalcGUI
-First Major Tkinter Project (CalculatorGUI)
+# Python Calculator GUI
+
+A project using tkinter to build a calculator with a GUI.
+
+My first
