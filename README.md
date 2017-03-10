@@ -8,9 +8,9 @@ My first large gui project.
 
 Current Imports:
 
-<p>
-Tkinter
-Future Division
-Math
-Random
-</p>
+<ol>
+<li>Tkinter</li>
+<li>Future Division</li>
+<li>Math</li>
+<li>Random</li>
+</ol>
