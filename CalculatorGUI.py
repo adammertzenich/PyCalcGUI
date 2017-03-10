@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 '''
 Name: Calculator Project
-Version: 2.3.0
+Version: 2.4.1
 Description: This project is to create a GUI based calculator using Tkinter
 Author: Adam Mertzenich
 
@@ -59,6 +59,10 @@ Changelog:
         + Setup workspace reborn, and got rid of it. Beginning changing how operators work and equals so it can be used.
     v2.3
         + Added multi number calculations (2+2+2+2)
+    v2.4
+        +- Changelog now in commits to github.
+    v2.4.1
+        + Added more comments
 '''
 from __future__ import division
 from Tkinter import *
@@ -69,7 +73,7 @@ try:
     ####
     # Canvas Variables/Settings
     ####
-    windowTitle = 'Calculator Project v2.3.0'
+    windowTitle = 'Calculator Project v2.4.1'
     
     # Canvas Properties
     canvasHeight = 300
@@ -108,13 +112,12 @@ try:
     ####
     # workspace = '' # variable will be used when multi digit calculations are added
     # RIP Workspace variable March 9th 2k17
-    # Workspace Reborn???
     
     operator = '' # default operator to addition
-    operationOne = ''
-    operationTwo = ''
-    answer = ''
-    operatorUsed = False
+    operationOne = '' # first number to be entered and used
+    operationTwo = '' # second number to be entered and used
+    answer = '' # answer that will be displayed later after math is done
+    operatorUsed = False # defaulting the operatorUsed to False
     
     
     # define setting operators for commands
@@ -123,6 +126,7 @@ try:
         global operatorUsed
         operator = 'add'
         if operatorUsed == True:
+            # when operator is used and is used again equals() is executed
             equals()
         else:
             operatorUsed = True
@@ -293,6 +297,7 @@ try:
         global answer
         global operator
         
+        # check the operator and set the answer to operationOne (operator) operationTwo + change the answerDisplay to show the correct answer
         if operator == 'add':
             answer = operationOne + operationTwo
             canvas.itemconfig(answerDisplay, text=answer)
@@ -305,16 +310,17 @@ try:
         if operator == 'divide':
             answer = operationOne / operationTwo
             canvas.itemconfig(answerDisplay, text=answer)
-        operationOne = answer
-        operationTwo = ''
+        operationOne = answer # operationOne is now answer so we can do math to the answer instead of re entering it
+        operationTwo = '' # empty string because operationTwo will be re-entered
     
+    # Sets all used variables to empty strings and configures the answerDisplay to display no answer
     def clear():
         global operator
         global operationOne
         global operationTwo
         global operatorUsed
         global answer
-        operator = '' # default operator to addition
+        operator = '' # default operator to empty string
         operationOne = ''
         operationTwo = ''
         operatorUsed = ''
@@ -355,29 +361,36 @@ try:
     numberNine = Button(root, text='9', command=nine)
     numberNine.grid(row=1, column=2)
     
-    # buttons (non number)
+    # Clear Buttom
     buttonClear = Button(root, text='Clear', command=clear)
     buttonClear.grid(row=0, column=0)
     
+    # Divide Button
     buttonDivide = Button(root, text='÷', command=division)
     buttonDivide.grid(row=0, column=3)
     
+    # Multiply Button
     buttonMultiply = Button(root, text='x', command=multiplication)
     buttonMultiply.grid(row=1, column=3)
-    
+   
+    # Subtract Button
     buttonSubtract = Button(root, text='-', command=subtraction)
     buttonSubtract.grid(row=2, column=3)
     
+    # Addition Button
     buttonAdd = Button(root, text='+', command=addition)
     buttonAdd.grid(row=3, column=3)
     
+    # Equals Button
     buttonEquals = Button(root, text='=', command=equals)
     buttonEquals.grid(row=4, column=3)
     
+    # Create text that will be changed to display the answer
     answerDisplay = canvas.create_text(100, 100, text='No Answer')
     
     # Enter event loop
     root.mainloop()
 
+# handling major exceptions
 except:
     print 'o'
