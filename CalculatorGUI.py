@@ -300,16 +300,16 @@ def equals():
         answer = operationOne + operationTwo
         canvas.itemconfig(answerDisplay, text=answer)
     if operator == 'subtract':
-        answer = operationOne - operationTwo
+        answer = float(operationOne) - float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
     if operator == 'multiple':
-        answer = operationOne * operationTwo
+        answer = float(operationOne) * float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
     if operator == 'divide':
-        answer = operationOne / operationTwo
+        answer = float(operationOne) / float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
     operationOne = answer # operationOne is now answer so we can do math to the answer instead of re entering it
-    operationTwo = '' # empty string because operationTwo will be re-entered
+    operationTwo = '0' # empty string because operationTwo will be re-entered
 
 # Sets all used variables to empty strings and configures the answerDisplay to display no answer
 def clear():
