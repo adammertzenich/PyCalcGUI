@@ -129,7 +129,7 @@ def addition():
         equals()
     else:
         operatorUsed = True
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 def subtraction():
     global operator
     global operatorUsed
@@ -297,7 +297,7 @@ def equals():
 
     # check the operator and set the answer to operationOne (operator) operationTwo + change the answerDisplay to show the correct answer
     if operator == 'add':
-        answer = operationOne + operationTwo
+        answer = float(operationOne) + float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
