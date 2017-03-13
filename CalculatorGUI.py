@@ -68,6 +68,19 @@ from __future__ import division
 from Tkinter import *
 import Tkinter,math,random
 
+'''
+      ( \
+       \ \
+       / /                |\\
+      / /     .-`````-.   / ^`-.
+      \ \    /         \_/  {|} `o
+       \ \  /   .---.   \\ _  ,--'
+        \ \/   /     \,  \( `^^^
+         \   \/\      (\  )
+          \   ) \     ) \ \
+oogabooga  ) /__ \__  ) (\ \___
+          (___)))__))(__))(__)))
+'''
 
 ####
 # Canvas Variables/Settings
