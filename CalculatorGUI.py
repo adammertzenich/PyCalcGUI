@@ -118,6 +118,9 @@ operationTwo = '' # second number to be entered and used
 answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 
+# setup answerDisplay changer function
+def setAnswerDisplay(var):
+    canvas.itemconfig(answerDisplay, text=var)
 
 # define setting operators for commands
 def addition():
@@ -138,7 +141,7 @@ def subtraction():
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 def division():
     global operator
     global operatorUsed
@@ -147,7 +150,7 @@ def division():
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 def multiplication():
     global operator
     global operatorUsed
@@ -156,7 +159,7 @@ def multiplication():
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
 # define numbers
 def zero():
