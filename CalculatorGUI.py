@@ -109,7 +109,7 @@ root.wm_title(windowTitle)
         \ \/   /     \,  \( `^^^
          \   \/\      (\  )
           \   ) \     ) \ \
-oogabooga  ) /__ \__  ) (\ \___
+ooga booga ) /__ \__  ) (\ \___
           (___)))__))(__))(__)))
 '''
 
@@ -124,6 +124,7 @@ canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 ####
 # workspace = '' # variable will be used when multi digit calculations are added
 # RIP Workspace variable March 9th 2k17
+# Note: Consider using a new version of the old workspace variable to concactate strings and convert to floats.
 
 operator = '' # default operator to addition
 operationOne = '' # first number to be entered and used
