@@ -252,9 +252,9 @@ def nine():
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
-        operationOne = float(operationOne)
+        print 'work in progress'
     if operatorUsed == True:
-        operationTwo = float(operationTwo)
+        print 'work in progress'
 def equals():
     global operationOne,operationTwo,answer,operator
 
