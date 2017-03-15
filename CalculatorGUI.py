@@ -303,6 +303,8 @@ def nine():
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
+def decimal():
+    print 'Work in progress'
 def equals():
     global operationOne
     global operationTwo
@@ -345,6 +347,11 @@ def clear():
 ####
 numberZero = Button(root, text='0', command=zero)
 numberZero.grid(row=4, column=0)
+
+# '.' button that will be used to perform calculations on decimals.
+
+buttonDecimal = Button(root, text='.', command=decimal)
+buttonDecimal.grid(row=4, column=1)
 
 numberOne = Button(root, text='1', command=one)
 numberOne.grid(row=3, column=0)
