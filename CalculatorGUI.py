@@ -177,8 +177,6 @@ def zero():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(0))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def one():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -187,8 +185,6 @@ def one():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(1))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def two():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -197,8 +193,6 @@ def two():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(2))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def three():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -207,8 +201,6 @@ def three():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(3))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def four():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -217,8 +209,6 @@ def four():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(4))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def five():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -227,8 +217,6 @@ def five():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(5))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def six():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -237,8 +225,6 @@ def six():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(6))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def seven():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -247,8 +233,6 @@ def seven():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(7))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def eight():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -257,8 +241,6 @@ def eight():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(8))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def nine():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -267,16 +249,12 @@ def nine():
     if operatorUsed == True:
         operationTwo = int(str(operationTwo) + str(9))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = float(operationOne)
     if operatorUsed == True:
         operationTwo = float(operationTwo)
-    else:
-        print 'operatorUsed should not be anything besides a boolean.'
 def equals():
     global operationOne,operationTwo,answer,operator
 
