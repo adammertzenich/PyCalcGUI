@@ -1,77 +1,25 @@
 # -*- coding: utf-8 -*-
-'''
-Name: Calculator Project
-Version: 2.4.1
-Description: This project is to create a GUI based calculator using Tkinter
-Author: Adam Mertzenich
-
-Changelog:
-    v0.1:
-        + Started Project
-        + Added GUI
-        + Created buttons/layout
-        + Setup variables
-    v0.2:
-        + Defined operators (add, subtract, multiply, divide)
-    v0.3:
-        + Defined number imputs 0-9
-        - Unused variables
-    v0.8:
-        + Operators (+, -, /, *) now change boolean operatorUsed to True from False
-        + Defined equals that adds the first variable with the second variable
-    v0.9:
-        + Display answer variable
-        + Equals now changes the displayed text
-        + Made clear button work
-        + Added 0-9 and operator commands to the buttons.
-        * Known bug: When trying to add to the answer (ex. 5+5=10) when you add another number it adds to the first (ex. 5+5=10, 10+1=6)
-    v1.0:
-        + Fixed adding to first number by resetting the first number to the answer
-        +- First working calculator version
-    v1.5:
-        + Bug fixes
-    v2.0:
-        + Re-organized some things.
-        - Removed old workspace concatenation method
-        + Alternative to previous workspace using concatenation method by converting previous number in the
-          operation(One or Two) into a string and then back to an integer.
-        +- Begin work on displaying numbers as you enter them.
-    v2.1:
-        + Add live input view
-    v2.2:
-        + Operators now change the view for better real time updatng
-        * Known bug: Divide not working correctly. 9/6=1? Nope...
-    v2.2.1
-        + Fixed division not working by importing division from future.
-        * Known bug: When operator changed after operationOne and Two have been chosen the second value become invisible (ex. 5+3, press - button, displays "5 subtract ", press another button (5) and it changes to 5 subtract 35
-        * Known bug: Operator changes after one has been selected instead of putting it at the end (only 2 numbers can be operated on at once)
-    v2.2.2
-        Fix bug with changing operator causing operationTwo to not be visible in the display.
-        * Known bug: Operator changes after one has been selected instead of putting it at the end (only 2 numbers can be operated on at once) Going to require changes to the concatenation .
-    v2.2.3
-        * v2.2.2 bugs not yet fixed
-        +- Operators and Operations now default to empty strings.
-    v2.2.4
-        + Fixed bug where operationTwo was not reset after getting an answer (ex. 1+2=3, 3+1 would do 3+21)
-    v2.2.4.2
-        + Began work on doing math with unlimited number of operations (2+2+2+2 instead of 2+2=4+2=6+2=8)
-    v2.2.5
-        + Setup workspace reborn, and got rid of it. Beginning changing how operators work and equals so it can be used.
-    v2.3
-        + Added multi number calculations (2+2+2+2)
-    v2.4
-        +- Changelog now in commits to github.
-    v2.4.1
-        + Added more comments
-'''
 from __future__ import division # Use python 3 division
 from Tkinter import *
-import Tkinter,math
 
+import Tkinter,tkMessageBox,math
+
+
+# Meta Data
+Name = 'Calculator Project'
+Description = 'This project is to create a GUI based calculator using Tkinter'
+Repository = 'https://github.com/adammertzenich/PyCalcGUI'
+Version = '2.4.1'
+Author = 'Adam Mertzenich'
+
+def about():
+    tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
+
+# End Meta Data
 ####
 # Canvas Variables/Settings
 ####
-windowTitle = 'Calculator Project v2.4.1'
+windowTitle = 'Calculator Project -' + ' v' + Version + ' - By: ' + Author 
 
 # Canvas Properties
 canvasHeight = 300
@@ -346,6 +294,9 @@ buttonAdd.grid(row=3, column=3)
 # Equals Button
 buttonEquals = Button(root, text='=', command=equals)
 buttonEquals.grid(row=4, column=3)
+
+buttonAbout = Button(root, text='About', command=about)
+buttonAbout.grid(row=0, column=6)
 
 # Create text that will be changed to display the answer
 answerDisplay = canvas.create_text(100, 100, text='No Answer')
