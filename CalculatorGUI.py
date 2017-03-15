@@ -64,7 +64,7 @@ Changelog:
     v2.4.1
         + Added more comments
 '''
-from __future__ import division
+from __future__ import division # Use python 3 division
 from Tkinter import *
 import Tkinter,math,random
 
