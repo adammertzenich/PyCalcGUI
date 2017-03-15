@@ -135,8 +135,7 @@ operatorUsed = False # defaulting the operatorUsed to False
 
 # define setting operators for commands
 def addition():
-    global operator
-    global operatorUsed
+    global operator,operatorUsed
     operator = 'add'
     if operatorUsed == True:
         # when operator is used and is used again equals() is executed
@@ -145,8 +144,7 @@ def addition():
         operatorUsed = True
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 def subtraction():
-    global operator
-    global operatorUsed
+    global operator,operatorUsed
     operator = 'subtract'
     if operatorUsed == True:
         equals()
@@ -154,8 +152,7 @@ def subtraction():
         operatorUsed = True
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 def division():
-    global operator
-    global operatorUsed
+    global operator,operatorUsed
     operator = 'divide'
     if operatorUsed == True:
         equals()
@@ -163,8 +160,7 @@ def division():
         operatorUsed = True
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 def multiplication():
-    global operator
-    global operatorUsed
+    global operator,operatorUsed
     operator = 'multiple'
     if operatorUsed == True:
         equals()
@@ -174,10 +170,7 @@ def multiplication():
 
 # define numbers
 def zero():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(0))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -187,10 +180,7 @@ def zero():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def one():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(1))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -200,10 +190,7 @@ def one():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def two():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(2))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -213,10 +200,7 @@ def two():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def three():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(3))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -226,10 +210,7 @@ def three():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def four():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(4))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -239,10 +220,7 @@ def four():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def five():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(5))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -252,10 +230,7 @@ def five():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def six():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(6))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -265,10 +240,7 @@ def six():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def seven():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(7))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -278,10 +250,7 @@ def seven():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def eight():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(8))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -291,10 +260,7 @@ def eight():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def nine():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
+    global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         operationOne = int(str(operationOne) + str(9))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -304,12 +270,9 @@ def nine():
     else:
         return 'you really messed something up! how did operatorUsed get set to a non boolean you fool!'
 def decimal():
-    print 'Work in progress'
+    global operationOne,operationTwo,operatorUsed,operator
 def equals():
-    global operationOne
-    global operationTwo
-    global answer
-    global operator
+    global operationOne,operationTwo,answer,operator
 
     # check the operator and set the answer to operationOne (operator) operationTwo + change the answerDisplay to show the correct answer
     if operator == 'add':
@@ -329,11 +292,7 @@ def equals():
 
 # Sets all used variables to empty strings and configures the answerDisplay to display no answer
 def clear():
-    global operator
-    global operationOne
-    global operationTwo
-    global operatorUsed
-    global answer
+    global operatorUsed,operationOne,operationTwo,answer,operator
     operator = '' # default operator to empty string
     operationOne = ''
     operationTwo = ''
