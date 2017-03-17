@@ -11,11 +11,10 @@ Description = 'This project is to create a GUI based calculator using Tkinter'
 Repository = 'https://github.com/adammertzenich/PyCalcGUI'
 Version = '2.5.0'
 Author = 'Adam Mertzenich'
-
-def about():
+def about(): # about button fires about() which displays the about message box
     tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
-
 # End Meta Data
+
 ####
 # Canvas Variables/Settings
 ####
@@ -32,7 +31,7 @@ gridColumn = 10
 gridRowspan = 10
 
 ####
-# Variable Handlers (prevent errors related to what is chosen in the canvas grid settings
+# Variable Handlers (prevent gridRow, gridColumn, and gridRowspan variables from being uncompatable values)
 ####
 if gridRowspan <= 0:
     gridRowspan = 1
@@ -64,15 +63,12 @@ ooga booga ) /__ \__  ) (\ \___
 ####
 # Create a canvas and place it
 ####
-canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor)
+canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor) # Uses variables defined above to create the canvas
 canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 
 ####
-# Setup math workspace
+# Begin Calculator
 ####
-# workspace = '' # variable will be used when multi digit calculations are added
-# RIP Workspace variable March 9th 2k17
-# Note: Consider using a new version of the old workspace variable to concactate strings and convert to floats.
 
 operator = '' # default operator to empty string
 operationOne = '0' # first number to be entered and used
@@ -228,7 +224,7 @@ def equals():
         operationOne = answer
         operationTwo = ''
 
-# Sets all used variables to empty strings and configures the answerDisplay to display no answer
+# Sets all used variables to empty strings or zero and resets the display.
 def clear():
     global operatorUsed,operationOne,operationTwo,answer,operator
     operator = '' # default operator to empty string
@@ -242,13 +238,14 @@ def clear():
 ####
 # Create calculator buttons
 ####
-numberZero = Button(root, text='0', command=zero)
-numberZero.grid(row=4, column=0)
 
-# '.' button that will be used to perform calculations on decimals.
-
+# Decimal button executes decimal() function and will be used to allow decimal calculations
 buttonDecimal = Button(root, text='.', command=decimal)
 buttonDecimal.grid(row=4, column=1)
+
+# Define buttons 0-9 that execute their respected number() functions
+numberZero = Button(root, text='0', command=zero)
+numberZero.grid(row=4, column=0)
 
 numberOne = Button(root, text='1', command=one)
 numberOne.grid(row=3, column=0)
