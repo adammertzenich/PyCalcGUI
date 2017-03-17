@@ -221,7 +221,7 @@ def equals():
         answer = float(operationOne) * float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
         operationOne = answer
-        operationTwo = '0'
+        operationTwo = ''
     if operator == 'divide':
         answer = float(operationOne) / float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
