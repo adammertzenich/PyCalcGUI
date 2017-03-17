@@ -74,10 +74,10 @@ canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 # RIP Workspace variable March 9th 2k17
 # Note: Consider using a new version of the old workspace variable to concactate strings and convert to floats.
 
-operator = '' # default operator to addition
-operationOne = '' # first number to be entered and used
-operationTwo = '' # second number to be entered and used
-answer = '' # answer that will be displayed later after math is done
+operator = '' # default operator to empty string
+operationOne = '0' # first number to be entered and used
+operationTwo = '0' # second number to be entered and used
+answer = '0' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 
 
@@ -220,15 +220,15 @@ def equals():
         answer = float(operationOne) / float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
     operationOne = answer # operationOne is now answer so we can do math to the answer instead of re entering it
-    operationTwo = '' # empty string because operationTwo will be re-entered
+    operationTwo = '0' # empty string because operationTwo will be re-entered
 
 # Sets all used variables to empty strings and configures the answerDisplay to display no answer
 def clear():
     global operatorUsed,operationOne,operationTwo,answer,operator
     operator = '' # default operator to empty string
-    operationOne = ''
-    operationTwo = ''
-    operatorUsed = ''
+    operationOne = '0'
+    operationTwo = '0'
+    operatorUsed = '0'
     answer = ''
     canvas.itemconfig(answerDisplay, text='No Answer')
     operatorUsed = False
