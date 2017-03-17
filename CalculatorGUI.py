@@ -9,7 +9,7 @@ import Tkinter,tkMessageBox,math
 Name = 'Calculator Project'
 Description = 'This project is to create a GUI based calculator using Tkinter'
 Repository = 'https://github.com/adammertzenich/PyCalcGUI'
-Version = '2.4.1'
+Version = '2.5.0'
 Author = 'Adam Mertzenich'
 
 def about():
