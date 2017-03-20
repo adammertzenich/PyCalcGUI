@@ -78,6 +78,17 @@ answer = '0' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 
 
+# Checks what number button is pressed and uses it
+def number(num):
+    global operationOne,operationTwo,operatorUsed,operator
+    if operatorUsed:
+        operationTwo = int(str(operationTwo) + str(num))
+        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    else:
+        operationOne = int(str(operationOne) + str(num))
+        canvas.itemconfig(answerDisplay, text=str(operationOne))
+
+
 # define setting operators for commands
 def addition():
     global operator,operatorUsed
@@ -115,16 +126,6 @@ def multiplication():
         operatorUsed = True
     operator = 'multiple'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-
-# Checks what number button is pressed and uses it
-def number(num):
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed:
-        operationTwo = int(str(operationTwo) + str(num))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        operationOne = int(str(operationOne) + str(num))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
 
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
