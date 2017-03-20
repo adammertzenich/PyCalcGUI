@@ -80,36 +80,39 @@ operatorUsed = False # defaulting the operatorUsed to False
 # define setting operators for commands
 def addition():
     global operator,operatorUsed
-    operator = 'add'
     if operatorUsed == True:
         # when operator is used and is used again equals() is executed
         equals()
     else:
         operatorUsed = True
+    operator = 'add'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+
 def subtraction():
     global operator,operatorUsed
-    operator = 'subtract'
     if operatorUsed == True:
         equals()
     else:
         operatorUsed = True
+    operator = 'subtract'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+
 def division():
     global operator,operatorUsed
-    operator = 'divide'
     if operatorUsed == True:
         equals()
     else:
         operatorUsed = True
+    operator = 'divide'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+
 def multiplication():
     global operator,operatorUsed
-    operator = 'multiple'
     if operatorUsed == True:
         equals()
     else:
         operatorUsed = True
+    operator = 'multiple'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
 # Checks what number button is pressed and uses it
@@ -122,94 +125,13 @@ def number(num):
         operationOne = int(str(operationOne) + str(num))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
 
-
-# define numbers
-def zero():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(0))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(0))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def one():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(1))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(1))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def two():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(2))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(2))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def three():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(3))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(3))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def four():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(4))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(4))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def five():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(5))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(5))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def six():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(6))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(6))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def seven():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(7))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(7))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def eight():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(8))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(8))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def nine():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(9))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(9))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         print 'work in progress'
     if operatorUsed == True:
         print 'work in progress'
+        
 def equals():
     global operationOne,operationTwo,answer,operator
 
