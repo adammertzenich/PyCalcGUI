@@ -70,9 +70,11 @@ def number(num):
     if operatorUsed:
         operationTwo = int(str(operationTwo) + str(num))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        display.insert(0, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
     else:
         operationOne = int(str(operationOne) + str(num))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
+        display.insert(0, str(operationOne))
 
 
 # define setting operators for commands
@@ -154,7 +156,12 @@ def clear():
     operatorUsed = '0'
     answer = ''
     canvas.itemconfig(answerDisplay, text='No Answer')
+    display.delete(0, END)
     operatorUsed = False
+
+
+
+
 
 ####
 # Create calculator buttons
@@ -224,6 +231,11 @@ buttonAbout.grid(row=0, column=6)
 
 # Create text that will be changed to display the answer
 answerDisplay = canvas.create_text(100, 100, text='No Answer')
+
+# Answer Display
+display = Tkinter.Entry(root, width = 40, bg = "white")
+display.grid(row = 8, column = 8, columnspan = 5)
+
 
 # Enter event loop
 root.mainloop()
