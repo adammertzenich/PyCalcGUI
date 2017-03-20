@@ -2,20 +2,20 @@
 from __future__ import division # Use python 3 division
 from Tkinter import *
 
-import Tkinter,tkMessageBox,math
+import Tkinter,tkMessageBox,math,time
 
 
 # Meta Data
 Name = 'Calculator Project'
 Description = 'This project is to create a GUI based calculator using Tkinter'
 Repository = 'https://github.com/adammertzenich/PyCalcGUI'
-Version = '2.5.0'
+Version = '2.5.2'
 Author = 'Adam Mertzenich'
-
-def about():
+def about(): # about button fires about() which displays the about message box
     tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
-
 # End Meta Data
+
+
 ####
 # Canvas Variables/Settings
 ####
@@ -32,7 +32,7 @@ gridColumn = 10
 gridRowspan = 10
 
 ####
-# Variable Handlers (prevent errors related to what is chosen in the canvas grid settings
+# Variable Handlers (prevent gridRow, gridColumn, and gridRowspan variables from being uncompatable values)
 ####
 if gridRowspan <= 0:
     gridRowspan = 1
@@ -47,32 +47,15 @@ if gridColumn < 0:
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
 
-'''
-      ( \
-       \ \
-       / /                |\\
-      / /     .-`````-.   / ^`-.
-      \ \    /         \_/  {|} `o
-       \ \  /   .---.   \\ _  ,--'
-        \ \/   /     \,  \( `^^^
-         \   \/\      (\  )
-          \   ) \     ) \ \
-ooga booga ) /__ \__  ) (\ \___
-          (___)))__))(__))(__)))
-'''
-
 ####
 # Create a canvas and place it
 ####
-canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor)
+canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor) # Uses variables defined above to create the canvas
 canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 
 ####
-# Setup math workspace
+# Begin Calculator
 ####
-# workspace = '' # variable will be used when multi digit calculations are added
-# RIP Workspace variable March 9th 2k17
-# Note: Consider using a new version of the old workspace variable to concactate strings and convert to floats.
 
 operator = '' # default operator to empty string
 operationOne = '0' # first number to be entered and used
@@ -81,128 +64,62 @@ answer = '0' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 
 
+# Checks what number button is pressed and uses it
+def number(num):
+    global operationOne,operationTwo,operatorUsed,operator
+    if operatorUsed:
+        operationTwo = int(str(operationTwo) + str(num))
+        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    else:
+        operationOne = int(str(operationOne) + str(num))
+        canvas.itemconfig(answerDisplay, text=str(operationOne))
+
+
 # define setting operators for commands
 def addition():
     global operator,operatorUsed
-    operator = 'add'
     if operatorUsed == True:
         # when operator is used and is used again equals() is executed
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def subtraction():
-    global operator,operatorUsed
-    operator = 'subtract'
-    if operatorUsed == True:
-        equals()
-    else:
-        operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def division():
-    global operator,operatorUsed
-    operator = 'divide'
-    if operatorUsed == True:
-        equals()
-    else:
-        operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def multiplication():
-    global operator,operatorUsed
-    operator = 'multiple'
-    if operatorUsed == True:
-        equals()
-    else:
-        operatorUsed = True
+    operator = 'add'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
-# define numbers
-def zero():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(0))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
+def subtraction():
+    global operator,operatorUsed
     if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(0))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def one():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(1))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
+        equals()
+    else:
+        operatorUsed = True
+    operator = 'subtract'
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+
+def division():
+    global operator,operatorUsed
     if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(1))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def two():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(2))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
+        equals()
+    else:
+        operatorUsed = True
+    operator = 'divide'
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+
+def multiplication():
+    global operator,operatorUsed
     if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(2))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def three():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(3))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(3))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def four():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(4))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(4))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def five():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(5))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(5))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def six():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(6))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(6))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def seven():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(7))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(7))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def eight():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(8))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(8))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-def nine():
-    global operationOne,operationTwo,operatorUsed,operator
-    if operatorUsed == False:
-        operationOne = int(str(operationOne) + str(9))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
-    if operatorUsed == True:
-        operationTwo = int(str(operationTwo) + str(9))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        equals()
+    else:
+        operatorUsed = True
+    operator = 'multiple'
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
         print 'work in progress'
     if operatorUsed == True:
         print 'work in progress'
+        
 def equals():
     global operationOne,operationTwo,answer,operator
 
@@ -228,7 +145,7 @@ def equals():
         operationOne = answer
         operationTwo = ''
 
-# Sets all used variables to empty strings and configures the answerDisplay to display no answer
+# Sets all used variables to empty strings or zero and resets the display.
 def clear():
     global operatorUsed,operationOne,operationTwo,answer,operator
     operator = '' # default operator to empty string
@@ -242,39 +159,40 @@ def clear():
 ####
 # Create calculator buttons
 ####
-numberZero = Button(root, text='0', command=zero)
-numberZero.grid(row=4, column=0)
 
-# '.' button that will be used to perform calculations on decimals.
-
+# Decimal button executes decimal() function and will be used to allow decimal calculations
 buttonDecimal = Button(root, text='.', command=decimal)
 buttonDecimal.grid(row=4, column=1)
 
-numberOne = Button(root, text='1', command=one)
+# Define buttons 0-9 that execute their respected number() functions
+numberZero = Button(root, text='0', command=lambda: number(0))
+numberZero.grid(row=4, column=0)
+
+numberOne = Button(root, text='1', command=lambda: number(1))
 numberOne.grid(row=3, column=0)
 
-numberTwo = Button(root, text='2', command=two)
+numberTwo = Button(root, text='2', command=lambda: number(2))
 numberTwo.grid(row=3, column=1)
 
-numberThree = Button(root, text='3', command=three)
+numberThree = Button(root, text='3', command=lambda: number(3))
 numberThree.grid(row=3, column=2)
 
-numberFour = Button(root, text='4', command=four)
+numberFour = Button(root, text='4', command=lambda: number(4))
 numberFour.grid(row=2, column=0)
 
-numberFive = Button(root, text='5', command=five)
+numberFive = Button(root, text='5', command=lambda: number(5))
 numberFive.grid(row=2, column=1)
 
-numberSix = Button(root, text='6', command=six)
+numberSix = Button(root, text='6', command=lambda: number(6))
 numberSix.grid(row=2, column=2)
 
-numberSeven = Button(root, text='7', command=seven)
+numberSeven = Button(root, text='7', command=lambda: number(7))
 numberSeven.grid(row=1, column=0)
 
-numberEight = Button(root, text='8', command=eight)
+numberEight = Button(root, text='8', command=lambda: number(8))
 numberEight.grid(row=1, column=1)
 
-numberNine = Button(root, text='9', command=nine)
+numberNine = Button(root, text='9', command=lambda: number(9))
 numberNine.grid(row=1, column=2)
 
 # Clear Buttom
@@ -309,3 +227,17 @@ answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
 # Enter event loop
 root.mainloop()
+
+'''
+      ( \
+       \ \
+       / /                |\\
+      / /     .-`````-.   / ^`-.
+      \ \    /         \_/  {|} `o
+       \ \  /   .---.   \\ _  ,--'
+        \ \/   /     \,  \( `^^^
+         \   \/\      (\  )
+          \   ) \     ) \ \
+ooga booga ) /__ \__  ) (\ \___
+          (___)))__))(__))(__)))
+'''
