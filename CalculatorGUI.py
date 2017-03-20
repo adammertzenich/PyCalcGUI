@@ -114,6 +114,13 @@ def multiplication():
 
 def number(num):
     global operationOne,operationTwo,operatorUsed,operator
+    if operatorUsed:
+        operationTwo = int(str(operationTwo) + str(num))
+        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    else:
+        operationOne = int(str(operationOne) + str(num))
+        canvas.itemconfig(answerDisplay, text=str(operationOne))
+    '''
     if num == 0:
         if operatorUsed == False:
             operationOne = int(str(operationOne) + str(0))
@@ -184,8 +191,7 @@ def number(num):
         if operatorUsed == True:
             operationTwo = int(str(operationTwo) + str(9))
             canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    else:
-        print ''
+    '''
 
 # define numbers
 def zero():
@@ -319,34 +325,34 @@ buttonDecimal = Button(root, text='.', command=decimal)
 buttonDecimal.grid(row=4, column=1)
 
 # Define buttons 0-9 that execute their respected number() functions
-numberZero = Button(root, text='0', command=zero)
+numberZero = Button(root, text='0', command=lambda: number(0))
 numberZero.grid(row=4, column=0)
 
-numberOne = Button(root, text='1', command=one)
+numberOne = Button(root, text='1', command=lambda: number(1))
 numberOne.grid(row=3, column=0)
 
-numberTwo = Button(root, text='2', command=two)
+numberTwo = Button(root, text='2', command=lambda: number(2))
 numberTwo.grid(row=3, column=1)
 
-numberThree = Button(root, text='3', command=three)
+numberThree = Button(root, text='3', command=lambda: number(3))
 numberThree.grid(row=3, column=2)
 
-numberFour = Button(root, text='4', command=four)
+numberFour = Button(root, text='4', command=lambda: number(4))
 numberFour.grid(row=2, column=0)
 
-numberFive = Button(root, text='5', command=five)
+numberFive = Button(root, text='5', command=lambda: number(5))
 numberFive.grid(row=2, column=1)
 
-numberSix = Button(root, text='6', command=six)
+numberSix = Button(root, text='6', command=lambda: number(6))
 numberSix.grid(row=2, column=2)
 
-numberSeven = Button(root, text='7', command=seven)
+numberSeven = Button(root, text='7', command=lambda: number(7))
 numberSeven.grid(row=1, column=0)
 
-numberEight = Button(root, text='8', command=eight)
+numberEight = Button(root, text='8', command=lambda: number(8))
 numberEight.grid(row=1, column=1)
 
-numberNine = Button(root, text='9', command=nine)
+numberNine = Button(root, text='9', command=lambda: number(9))
 numberNine.grid(row=1, column=2)
 
 # Clear Buttom
