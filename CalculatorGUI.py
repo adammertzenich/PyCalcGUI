@@ -112,6 +112,7 @@ def multiplication():
         operatorUsed = True
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
+# Checks what number button is pressed and uses it
 def number(num):
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed:
@@ -120,78 +121,7 @@ def number(num):
     else:
         operationOne = int(str(operationOne) + str(num))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
-    '''
-    if num == 0:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(0))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(0))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 1:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(1))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(1))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 2:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(2))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(2))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 3:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(3))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(3))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 4:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(4))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(4))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 5:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(5))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(5))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 6:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(6))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(6))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 7:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(7))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(7))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 8:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(8))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(8))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    if num == 9:
-        if operatorUsed == False:
-            operationOne = int(str(operationOne) + str(9))
-            canvas.itemconfig(answerDisplay, text=str(operationOne))
-        if operatorUsed == True:
-            operationTwo = int(str(operationTwo) + str(9))
-            canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-    '''
+
 
 # define numbers
 def zero():
