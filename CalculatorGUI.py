@@ -47,20 +47,6 @@ if gridColumn < 0:
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
 
-'''
-      ( \
-       \ \
-       / /                |\\
-      / /     .-`````-.   / ^`-.
-      \ \    /         \_/  {|} `o
-       \ \  /   .---.   \\ _  ,--'
-        \ \/   /     \,  \( `^^^
-         \   \/\      (\  )
-          \   ) \     ) \ \
-ooga booga ) /__ \__  ) (\ \___
-          (___)))__))(__))(__)))
-'''
-
 ####
 # Create a canvas and place it
 ####
@@ -241,3 +227,17 @@ answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
 # Enter event loop
 root.mainloop()
+
+'''
+      ( \
+       \ \
+       / /                |\\
+      / /     .-`````-.   / ^`-.
+      \ \    /         \_/  {|} `o
+       \ \  /   .---.   \\ _  ,--'
+        \ \/   /     \,  \( `^^^
+         \   \/\      (\  )
+          \   ) \     ) \ \
+ooga booga ) /__ \__  ) (\ \___
+          (___)))__))(__))(__)))
+'''
