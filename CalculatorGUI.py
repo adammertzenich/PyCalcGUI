@@ -180,72 +180,72 @@ def clear():
 
 # Decimal button executes decimal() function and will be used to allow decimal calculations
 buttonDecimal = Button(root, text='.', command=decimal)
-buttonDecimal.grid(row=4, column=1)
+buttonDecimal.grid(row=5, column=1)
 
 # Define buttons 0-9 that execute their respected number() functions
 numberZero = Button(root, text='0', command=lambda: number(0))
-numberZero.grid(row=4, column=0)
+numberZero.grid(row=5, column=0)
 
 numberOne = Button(root, text='1', command=lambda: number(1))
-numberOne.grid(row=3, column=0)
+numberOne.grid(row=4, column=0)
 
 numberTwo = Button(root, text='2', command=lambda: number(2))
-numberTwo.grid(row=3, column=1)
+numberTwo.grid(row=4, column=1)
 
 numberThree = Button(root, text='3', command=lambda: number(3))
-numberThree.grid(row=3, column=2)
+numberThree.grid(row=4, column=2)
 
 numberFour = Button(root, text='4', command=lambda: number(4))
-numberFour.grid(row=2, column=0)
+numberFour.grid(row=3, column=0)
 
 numberFive = Button(root, text='5', command=lambda: number(5))
-numberFive.grid(row=2, column=1)
+numberFive.grid(row=3, column=1)
 
 numberSix = Button(root, text='6', command=lambda: number(6))
-numberSix.grid(row=2, column=2)
+numberSix.grid(row=3, column=2)
 
 numberSeven = Button(root, text='7', command=lambda: number(7))
-numberSeven.grid(row=1, column=0)
+numberSeven.grid(row=2, column=0)
 
 numberEight = Button(root, text='8', command=lambda: number(8))
-numberEight.grid(row=1, column=1)
+numberEight.grid(row=2, column=1)
 
 numberNine = Button(root, text='9', command=lambda: number(9))
-numberNine.grid(row=1, column=2)
+numberNine.grid(row=2, column=2)
 
 # Clear Buttom
 buttonClear = Button(root, text='Clear', command=clear)
-buttonClear.grid(row=0, column=0)
+buttonClear.grid(row=1, column=0)
 
 # Divide Button
 buttonDivide = Button(root, text='÷', command=division)
-buttonDivide.grid(row=0, column=3)
+buttonDivide.grid(row=1, column=3)
 
 # Multiply Button
 buttonMultiply = Button(root, text='x', command=multiplication)
-buttonMultiply.grid(row=1, column=3)
+buttonMultiply.grid(row=2, column=3)
 
 # Subtract Button
 buttonSubtract = Button(root, text='-', command=subtraction)
-buttonSubtract.grid(row=2, column=3)
+buttonSubtract.grid(row=3, column=3)
 
 # Addition Button
 buttonAdd = Button(root, text='+', command=addition)
-buttonAdd.grid(row=3, column=3)
+buttonAdd.grid(row=4, column=3)
 
 # Equals Button
 buttonEquals = Button(root, text='=', command=equals)
-buttonEquals.grid(row=4, column=3)
+buttonEquals.grid(row=5, column=3)
 
 buttonAbout = Button(root, text='About', command=about)
-buttonAbout.grid(row=0, column=6)
+buttonAbout.grid(row=1, column=6)
 
 # Create text that will be changed to display the answer
 answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
 # Answer Display
-display = Tkinter.Entry(root, width = 40, bg = "white")
-display.grid(row = 8, column = 8, columnspan = 5)
+display = Tkinter.Entry(root, width = 20, bg = "white")
+display.grid(row = 0, column = 0, columnspan = 5)
 
 
 # Enter event loop
