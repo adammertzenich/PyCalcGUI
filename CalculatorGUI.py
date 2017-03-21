@@ -165,6 +165,19 @@ def clear():
     operationOne = '0'
     operationTwo = '0'
     operatorUsed = '0'
+    '''
+          ( \
+           \ \
+           / /                |\\
+          / /     .-`````-.   / ^`-.
+          \ \    /         \_/  {|} `o
+           \ \  /   .---.   \\ _  ,--'
+            \ \/   /     \,  \( `^^^
+             \   \/\      (\  )
+              \   ) \     ) \ \
+    ooga booga ) /__ \__  ) (\ \___
+              (___)))__))(__))(__)))
+    '''
     answer = ''
     canvas.itemconfig(answerDisplay, text='No Answer')
     display.delete(0, END)
@@ -250,17 +263,3 @@ display.grid(row = 0, column = 0, columnspan = 5)
 
 # Enter event loop
 root.mainloop()
-
-'''
-      ( \
-       \ \
-       / /                |\\
-      / /     .-`````-.   / ^`-.
-      \ \    /         \_/  {|} `o
-       \ \  /   .---.   \\ _  ,--'
-        \ \/   /     \,  \( `^^^
-         \   \/\      (\  )
-          \   ) \     ) \ \
-ooga booga ) /__ \__  ) (\ \___
-          (___)))__))(__))(__)))
-'''
