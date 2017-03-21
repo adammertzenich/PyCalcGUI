@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import division # Use python 3 division
 from Tkinter import *
+import Tkinter
 
-import Tkinter,tkMessageBox,math,time
+import tkMessageBox,math,time
 
 
 # Meta Data
@@ -70,10 +71,12 @@ def number(num):
     if operatorUsed:
         operationTwo = int(str(operationTwo) + str(num))
         canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
-        display.insert(0, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
     else:
         operationOne = int(str(operationOne) + str(num))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
+        display.delete(0, Tkinter.END)
         display.insert(0, str(operationOne))
 
 
@@ -87,6 +90,8 @@ def addition():
         operatorUsed = True
     operator = 'add'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.delete(0, Tkinter.END)
+    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
 def subtraction():
     global operator,operatorUsed
@@ -96,6 +101,8 @@ def subtraction():
         operatorUsed = True
     operator = 'subtract'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.delete(0, Tkinter.END)
+    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
 def division():
     global operator,operatorUsed
@@ -105,6 +112,8 @@ def division():
         operatorUsed = True
     operator = 'divide'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.delete(0, Tkinter.END)
+    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
 def multiplication():
     global operator,operatorUsed
@@ -114,6 +123,8 @@ def multiplication():
         operatorUsed = True
     operator = 'multiple'
     canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.delete(0, Tkinter.END)
+    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
 
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
