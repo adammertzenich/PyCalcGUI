@@ -3,8 +3,7 @@ from __future__ import division # Use python 3 division
 from Tkinter import *
 import Tkinter
 
-import tkMessageBox,math,time
-
+import tkMessageBox,math,time,traceback
 
 # Meta Data
 Name = 'Calculator Project'
@@ -60,7 +59,7 @@ canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 operator = '' # default operator to empty string
 operationOne = '' # first number to be entered and used
 operationTwo = '' # second number to be entered and used
-answer = '0' # answer that will be displayed later after math is done
+answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = ''
 
@@ -69,7 +68,7 @@ def reset():
     operator = '' # default operator to empty string
     operationOne = '' # first number to be entered and used
     operationTwo = '' # second number to be entered and used
-    answer = '0' # answer that will be displayed later after math is done
+    answer = '' # answer that will be displayed later after math is done
     operatorUsed = False # defaulting the operatorUsed to False
     operatorDisplay = ''
 
@@ -85,52 +84,67 @@ def number(num):
         display.delete(0, Tkinter.END)
         display.insert(0, str(operationOne))
 
-
 # define setting operators for commands
 def addition():
     global operator,operatorUsed,operatorDisplay
-    operator = 'add'
-    operatorDisplay = '+'
     if operatorUsed == True:
         # when operator is used and is used again equals() is executed
+        operator = 'add'
+        operatorDisplay = '+'
         equals()
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
+        operator = 'add'
+        operatorDisplay = '+'
         operatorUsed = True
-    display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def subtraction():
     global operator,operatorUsed,operatorDisplay
-    operatorDisplay = '-'
-    operator = 'subtract'
     if operatorUsed == True:
+        operatorDisplay = '-'
+        operator = 'subtract'
         equals()
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
+        operatorDisplay = '-'
+        operator = 'subtract'
         operatorUsed = True
-    display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def division():
     global operator,operatorUsed,operatorDisplay
-    operatorDisplay = '/'
-    operator = 'divide'
     if operatorUsed == True:
+        operatorDisplay = '/'
+        operator = 'divide'
         equals()
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
+        operatorDisplay = '/'
+        operator = 'divide'
         operatorUsed = True
-    display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def multiplication():
     global operator,operatorUsed,operatorDisplay
-    operatorDisplay = '*'
-    operator = 'multiple'
     if operatorUsed == True:
+        operatorDisplay = '*'
+        operator = 'multiple'
         equals()
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
+        operatorDisplay = '*'
+        operator = 'multiple'
         operatorUsed = True
-    display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
@@ -147,13 +161,13 @@ def equals():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = '0'
+        operationTwo = ''
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = '0'
+        operationTwo = ''
     if operator == 'multiple':
         answer = float(operationOne) * float(operationTwo)
         display.delete(0, Tkinter.END)
