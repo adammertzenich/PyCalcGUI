@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import division # Use python 3 division
 from Tkinter import *
+from random import *
 import Tkinter
 
 import tkMessageBox,math,time
@@ -9,7 +10,7 @@ import tkMessageBox,math,time
 Name = 'Calculator Project'
 Description = 'This project is to create a GUI based calculator using Tkinter'
 Repository = 'https://github.com/adammertzenich/PyCalcGUI'
-Version = '2.7.4'
+Version = '2.7.5'
 Author = 'Adam Mertzenich'
 def about(): # about button fires about() which displays the about message box
     tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
@@ -19,7 +20,15 @@ def about(): # about button fires about() which displays the about message box
 ####
 # Canvas Variables/Settings
 ####
-windowTitle = 'Calculator Project'
+def strike(text):
+    result = ''
+    for c in text:
+        result = result + c + '\u0336'
+    return result
+
+titles = ['Calculator Project', '3-- Fork', str(randint(81,171)) + ' years in service', 'Perfect calculations', 'made with' + strike('hate') + 'love']
+
+windowTitle = titles[randint(0,4)]
 
 # Canvas Properties
 canvasHeight = 4
@@ -46,6 +55,9 @@ if gridColumn < 0:
 ####
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
+root.lift()
+
+
 
 ####
 # Create a canvas and place it
@@ -63,6 +75,7 @@ answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = ''
 
+
 def reset():
     global operator,operationOne,operationTwo,answer,operatorUsed,operatorDisplay
     operator = '' # default operator to empty string
@@ -71,6 +84,7 @@ def reset():
     answer = '' # answer that will be displayed later after math is done
     operatorUsed = False # defaulting the operatorUsed to False
     operatorDisplay = ''
+
 
 # Checks what number button is pressed and uses it
 def number(num):
@@ -84,7 +98,6 @@ def number(num):
         display.delete(0, Tkinter.END)
         display.insert(0, str(operationOne))
 
-# define setting operators for commands
 def addition():
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
@@ -145,6 +158,7 @@ def multiplication():
         operatorUsed = True
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+
 
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
