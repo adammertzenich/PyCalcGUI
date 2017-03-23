@@ -78,12 +78,10 @@ def number(num):
     global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
     if operatorUsed:
         operationTwo = int(str(operationTwo) + str(num))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operationOne = int(str(operationOne) + str(num))
-        canvas.itemconfig(answerDisplay, text=str(operationOne))
         display.delete(0, Tkinter.END)
         display.insert(0, str(operationOne))
 
@@ -98,7 +96,6 @@ def addition():
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
     display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
@@ -110,7 +107,6 @@ def subtraction():
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
     display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
@@ -122,7 +118,6 @@ def division():
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
     display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
@@ -134,7 +129,6 @@ def multiplication():
         equals()
     else:
         operatorUsed = True
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
     display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
@@ -148,31 +142,26 @@ def decimal():
 def equals():
     global operationOne,operationTwo,answer,operator,operatorDisplay
 
-    # check the operator and set the answer to operationOne (operator) operationTwo + change the answerDisplay to show the correct answer
     if operator == 'add':
         answer = float(operationOne) + float(operationTwo)
-        canvas.itemconfig(answerDisplay, text=answer)
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = '0'
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
-        canvas.itemconfig(answerDisplay, text=answer)
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = '0'
     if operator == 'multiple':
         answer = float(operationOne) * float(operationTwo)
-        canvas.itemconfig(answerDisplay, text=answer)
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'divide':
         answer = float(operationOne) / float(operationTwo)
-        canvas.itemconfig(answerDisplay, text=answer)
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
@@ -181,7 +170,6 @@ def equals():
 def clear():
     global operatorUsed,operationOne,operationTwo,answer,operator,operatorDisplay
     reset()
-    canvas.itemconfig(answerDisplay, text='No Answer')
     display.delete(0, END)
     operatorUsed = False
 
@@ -267,8 +255,8 @@ buttonEquals.grid(row=5, column=3)
 buttonAbout = Button(root, text='About', command=about)
 buttonAbout.grid(row=1, column=6)
 
-# Create text that will be changed to display the answer
-answerDisplay = canvas.create_text(100, 100, text='No Answer')
+# Create text that will be changed to display the answer (no longer used)
+# answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
 # Answer Display
 display = Tkinter.Entry(root, width = 18, bg = "white")
