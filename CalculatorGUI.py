@@ -57,13 +57,21 @@ canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 ####
 # Begin Calculator
 ####
-
 operator = '' # default operator to empty string
-operationOne = '0' # first number to be entered and used
-operationTwo = '0' # second number to be entered and used
+operationOne = '' # first number to be entered and used
+operationTwo = '' # second number to be entered and used
 answer = '0' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = ''
+
+def reset():
+    global operator,operationOne,operationTwo,answer,operatorUsed,operatorDisplay
+    operator = '' # default operator to empty string
+    operationOne = '' # first number to be entered and used
+    operationTwo = '' # second number to be entered and used
+    answer = '0' # answer that will be displayed later after math is done
+    operatorUsed = False # defaulting the operatorUsed to False
+    operatorDisplay = ''
 
 # Checks what number button is pressed and uses it
 def number(num):
@@ -172,11 +180,12 @@ def equals(): # WIP
 # Sets all used variables to empty strings or zero and resets the display.
 def clear():
     global operatorUsed,operationOne,operationTwo,answer,operator,operatorDisplay
-    operator = '' # default operator to empty string
-    operationOne = '0'
-    operationTwo = '0'
-    operatorUsed = '0'
-    operatorDisplay = ''
+    reset()
+    canvas.itemconfig(answerDisplay, text='No Answer')
+    display.delete(0, END)
+    operatorUsed = False
+
+
     '''
           ( \
            \ \
@@ -190,13 +199,6 @@ def clear():
     ooga booga ) /__ \__  ) (\ \___
               (___)))__))(__))(__)))
     '''
-    answer = ''
-    canvas.itemconfig(answerDisplay, text='No Answer')
-    display.delete(0, END)
-    operatorUsed = False
-
-
-
 
 
 ####
