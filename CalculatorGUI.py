@@ -23,8 +23,8 @@ def about(): # about button fires about() which displays the about message box
 windowTitle = 'Calculator Project -' + ' v' + Version + ' - By: ' + Author 
 
 # Canvas Properties
-canvasHeight = 300
-canvasWidth = 300
+canvasHeight = 4
+canvasWidth = 4
 canvasBGColor = 'white'
 
 # Canvas Grid Settings
