@@ -133,7 +133,7 @@ def decimal():
     if operatorUsed == True:
         print 'work in progress'
         
-def equals():
+def equals(): # WIP
     global operationOne,operationTwo,answer,operator
 
     # check the operator and set the answer to operationOne (operator) operationTwo + change the answerDisplay to show the correct answer
