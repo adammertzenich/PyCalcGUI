@@ -140,6 +140,8 @@ def equals():
     if operator == 'add':
         answer = float(operationOne) + float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = '0'
     if operator == 'subtract':
