@@ -55,8 +55,6 @@ if gridColumn < 0:
 ####
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
-root.lift()
-
 
 
 ####
