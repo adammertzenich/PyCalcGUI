@@ -10,7 +10,7 @@ import tkMessageBox,math,time
 Name = 'Calculator Project'
 Description = 'This project is to create a GUI based calculator using Tkinter'
 Repository = 'https://github.com/adammertzenich/PyCalcGUI'
-Version = '2.5.2'
+Version = '2.6.0'
 Author = 'Adam Mertzenich'
 def about(): # about button fires about() which displays the about message box
     tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
@@ -63,16 +63,16 @@ operationOne = '0' # first number to be entered and used
 operationTwo = '0' # second number to be entered and used
 answer = '0' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
-
+operatorDisplay = ''
 
 # Checks what number button is pressed and uses it
 def number(num):
-    global operationOne,operationTwo,operatorUsed,operator
+    global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
     if operatorUsed:
         operationTwo = int(str(operationTwo) + str(num))
-        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
         display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operationOne = int(str(operationOne) + str(num))
         canvas.itemconfig(answerDisplay, text=str(operationOne))
@@ -82,49 +82,53 @@ def number(num):
 
 # define setting operators for commands
 def addition():
-    global operator,operatorUsed
+    global operator,operatorUsed,operatorDisplay
+    operator = 'add'
+    operatorDisplay = '+'
     if operatorUsed == True:
         # when operator is used and is used again equals() is executed
         equals()
     else:
         operatorUsed = True
-    operator = 'add'
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def subtraction():
-    global operator,operatorUsed
+    global operator,operatorUsed,operatorDisplay
+    operatorDisplay = '-'
+    operator = 'subtract'
     if operatorUsed == True:
         equals()
     else:
         operatorUsed = True
-    operator = 'subtract'
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def division():
-    global operator,operatorUsed
+    global operator,operatorUsed,operatorDisplay
+    operatorDisplay = '/'
+    operator = 'divide'
     if operatorUsed == True:
         equals()
     else:
         operatorUsed = True
-    operator = 'divide'
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def multiplication():
-    global operator,operatorUsed
+    global operator,operatorUsed,operatorDisplay
+    operatorDisplay = '*'
+    operator = 'multiple'
     if operatorUsed == True:
         equals()
     else:
         operatorUsed = True
-    operator = 'multiple'
-    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    canvas.itemconfig(answerDisplay, text=str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     display.delete(0, Tkinter.END)
-    display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo))
+    display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
@@ -134,39 +138,45 @@ def decimal():
         print 'work in progress'
         
 def equals(): # WIP
-    global operationOne,operationTwo,answer,operator
+    global operationOne,operationTwo,answer,operator,operatorDisplay
 
     # check the operator and set the answer to operationOne (operator) operationTwo + change the answerDisplay to show the correct answer
     if operator == 'add':
         answer = float(operationOne) + float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
         display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + str(operator) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = '0'
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = '0'
     if operator == 'multiple':
         answer = float(operationOne) * float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'divide':
         answer = float(operationOne) / float(operationTwo)
         canvas.itemconfig(answerDisplay, text=answer)
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
-
 # Sets all used variables to empty strings or zero and resets the display.
 def clear():
-    global operatorUsed,operationOne,operationTwo,answer,operator
+    global operatorUsed,operationOne,operationTwo,answer,operator,operatorDisplay
     operator = '' # default operator to empty string
     operationOne = '0'
     operationTwo = '0'
     operatorUsed = '0'
+    operatorDisplay = ''
     '''
           ( \
            \ \
