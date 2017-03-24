@@ -2,9 +2,8 @@
 from __future__ import division # Use python 3 division
 from Tkinter import *
 from random import *
-import Tkinter
 
-import tkMessageBox,math,time
+import Tkinter,tkMessageBox
 
 # Meta Data
 Name = 'Calculator Project'
@@ -160,7 +159,7 @@ def decimal():
         print 'work in progress'
     if operatorUsed == True:
         print 'work in progress'
-        
+
 def equals():
     global operationOne,operationTwo,answer,operator,operatorDisplay
 
