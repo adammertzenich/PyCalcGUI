@@ -2,7 +2,6 @@
 from __future__ import division # Use python 3 division
 from Tkinter import *
 from random import *
-
 import Tkinter,tkMessageBox
 
 # Meta Data
@@ -15,13 +14,7 @@ def about(): # about button fires about() which displays the about message box
     tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
 # End Meta Data
 
-
-
-
-####
-# Canvas Variables/Settings
-####
-
+# Begin Settings
 titles = ['Calculator Project', '3-- Fork', str(randint(81,171)) + ' years in service', 'made with h̶a̶t̶e̶ love', 'root@github.com', '√']
 windowTitle = titles[randint(0,5)]
 
@@ -34,10 +27,10 @@ canvasBGColor = 'white'
 gridRow = 10
 gridColumn = 10
 gridRowspan = 10
+# End Settings
 
-####
-# Variable Handlers (prevent gridRow, gridColumn, and gridRowspan variables from being uncompatable values)
-####
+# Begin Setup
+# Prevent row and rowspan from being certain values
 if gridRowspan <= 0:
     gridRowspan = 1
 if gridRow < 0:
@@ -45,22 +38,19 @@ if gridRow < 0:
 if gridColumn < 0:
     gridColumn = 0
 
-####
-# Create the main window
-####
+# define root and create the main window
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
 
-
-####
-# Create a canvas and place it
-####
+# Create and place canvas using settings
 canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor) # Uses variables defined above to create the canvas
 canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
+# End Setup
 
-####
-# Begin Calculator
-####
+/*
+    Begin Calculator
+*/
+
 operator = '' # default operator to empty string
 operationOne = '' # first number to be entered and used
 operationTwo = '' # second number to be entered and used
@@ -68,7 +58,7 @@ answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = ''
 
-
+# resets values to default when called in the clear() function
 def reset():
     global operator,operationOne,operationTwo,answer,operatorUsed,operatorDisplay
     operator = '' # default operator to empty string
@@ -78,8 +68,7 @@ def reset():
     operatorUsed = False # defaulting the operatorUsed to False
     operatorDisplay = ''
 
-
-# Checks what number button is pressed and uses it
+# ran when a button is pressed to modify the operations
 def number(num):
     global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
     if operatorUsed:
@@ -91,6 +80,7 @@ def number(num):
         display.delete(0, Tkinter.END)
         display.insert(0, str(operationOne))
 
+# ran when add button is pressed
 def addition():
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
@@ -107,6 +97,7 @@ def addition():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
+# ran when the subtract button is pressed
 def subtraction():
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
@@ -122,6 +113,7 @@ def subtraction():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
+# ran when the divide button is pressed
 def division():
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
@@ -137,6 +129,7 @@ def division():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
+# ran when the multiply button is pressed
 def multiplication():
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
@@ -152,7 +145,7 @@ def multiplication():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
-
+# ran when the decimal button is pressed, work in progress
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
@@ -160,6 +153,7 @@ def decimal():
     if operatorUsed == True:
         print 'work in progress'
 
+# ran when equals button is pressed, edits the display and resets/modifies needed values
 def equals():
     global operationOne,operationTwo,answer,operator,operatorDisplay
 
@@ -187,7 +181,8 @@ def equals():
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
-# Sets all used variables to empty strings or zero and resets the display.
+
+# resets to defaults and clears display, runs reset() function
 def clear():
     global operatorUsed,operationOne,operationTwo,answer,operator,operatorDisplay
     reset()
