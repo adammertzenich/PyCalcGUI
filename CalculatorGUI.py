@@ -17,18 +17,14 @@ def about(): # about button fires about() which displays the about message box
 # End Meta Data
 
 
+
+
 ####
 # Canvas Variables/Settings
 ####
-def strike(text):
-    result = ''
-    for c in text:
-        result = result + c + '\u0336'
-    return result
 
-titles = ['Calculator Project', '3-- Fork', str(randint(81,171)) + ' years in service', 'Perfect calculations', 'made with' + strike('hate') + 'love']
-
-windowTitle = titles[randint(0,4)]
+titles = ['Calculator Project', '3-- Fork', str(randint(81,171)) + ' years in service', 'made with h̶a̶t̶e̶ love', 'root@github.com', '√']
+windowTitle = titles[randint(0,5)]
 
 # Canvas Properties
 canvasHeight = 4
@@ -276,7 +272,7 @@ buttonAdd.grid(row=4, column=3)
 
 # Equals Button
 buttonEquals = Button(root, text='=', command=equals)
-buttonEquals.grid(row=5, column=3)
+buttonEquals.zgrid(row=5, column=3)
 
 buttonAbout = Button(root, text='About', command=about)
 buttonAbout.grid(row=1, column=6)
