@@ -47,9 +47,9 @@ canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background
 canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 # End Setup
 
-/*
+'''
     Begin Calculator
-*/
+'''
 
 operator = '' # default operator to empty string
 operationOne = '' # first number to be entered and used
@@ -266,7 +266,7 @@ buttonAdd.grid(row=4, column=3)
 
 # Equals Button
 buttonEquals = Button(root, text='=', command=equals)
-buttonEquals.zgrid(row=5, column=3)
+buttonEquals.grid(row=5, column=3)
 
 buttonAbout = Button(root, text='About', command=about)
 buttonAbout.grid(row=1, column=6)
@@ -275,7 +275,7 @@ buttonAbout.grid(row=1, column=6)
 # answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
 # Answer Display
-display = Tkinter.Entry(root, width = 18, bg = "white")
+display = Tkinter.Entry(root, width = 18, bg = "white", justify = CENTER)
 display.grid(row = 0, column = 0, columnspan = 5)
 
 
