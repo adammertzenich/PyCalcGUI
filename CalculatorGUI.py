@@ -145,17 +145,17 @@ def multiplication():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
-def square():
+def power():
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
         operatorDisplay = '^'
-        operator = 'square'
+        operator = 'power'
         equals()
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operatorDisplay = '^'
-        operator = 'square'
+        operator = 'power'
         operatorUsed = True
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
@@ -196,7 +196,7 @@ def equals():
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
-    if operator == 'square':
+    if operator == 'power':
         answer = float(operationOne) ** float(operationTwo)
         display.delete(0,Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
@@ -277,9 +277,9 @@ buttonDivide.grid(row=1, column=3)
 buttonMultiply = Button(root, text='x', command=multiplication)
 buttonMultiply.grid(row=2, column=3)
 
-# Square Button
-buttonSquare = Button(root, text='^', command=square)
-buttonSquare.grid(row=2, column=4)
+# Power Button
+buttonPower = Button(root, text='^', command=power)
+buttonPower.grid(row=2, column=4)
 
 # Subtract Button
 buttonSubtract = Button(root, text='-', command=subtraction)
