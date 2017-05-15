@@ -18,6 +18,9 @@ def about(): # about button fires about() which displays the about message box
 titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love', 'root@github.com', 'now with math']
 windowTitle = titles[randint(0,4)]
 
+# User Settings
+displayColor = 'lightblue'
+
 # Canvas Properties
 canvasHeight = 4
 canvasWidth = 4
@@ -316,7 +319,7 @@ buttonAbout.grid(row=1, column=6)
 # answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
 # Answer Display
-display = Tkinter.Entry(root, width = 18, bg = "lightblue", justify = CENTER)
+display = Tkinter.Entry(root, width = 18, bg = displayColor, justify = CENTER)
 display.grid(row = 0, column = 0, columnspan = 5)
 
 
