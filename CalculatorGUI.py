@@ -168,6 +168,12 @@ def sqrt():
     operatorDisplay = '√'
     operator = 'sqrt'
     equals()
+    
+def pi():
+    global operator,operatorUsed,operatorDisplay
+    operatorDisplay = 'π'
+    operator = 'pi'
+    equals()
 
 # ran when the decimal button is pressed, work in progress
 def decimal():
@@ -215,6 +221,12 @@ def equals():
         answer = float(math.sqrt(answer))
         display.delete(0,Tkinter.END)
         display.insert(Tkinter.END, operatorDisplay+ " " + str(operationOne) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        operationOne = answer
+        operationTwo = ''
+    if operator == 'pi': # π
+        answer = math.pi
+        display.delete(0,Tkinter.END)
+        display.insert(Tkinter.END, answer)
         operationOne = answer
         operationTwo = ''
 
@@ -299,6 +311,10 @@ buttonPower.grid(row=2, column=4)
 # Sqrt Button
 buttonSqrt = Button(root, text='√', command=sqrt)
 buttonSqrt.grid(row=3, column=4)
+
+# π Button
+buttonPi = Button(root, text='π', command=pi)
+buttonPi.grid(row=4, column=4)
 
 # Subtract Button
 buttonSubtract = Button(root, text='-', command=subtraction)
