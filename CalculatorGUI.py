@@ -15,7 +15,7 @@ def about(): # about button fires about() which displays the about message box
 # End Meta Data
 
 # Begin Settings
-titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love', 'root@github.com', '√ running']
+titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love', 'root@github.com', 'now with math']
 windowTitle = titles[randint(0,4)]
 
 # Canvas Properties
