@@ -15,8 +15,8 @@ def about(): # about button fires about() which displays the about message box
 # End Meta Data
 
 # Begin Settings
-titles = ['Calculator Project', '3-- Fork', str(randint(81,171)) + ' years in service', 'made with h̶a̶t̶e̶ love', 'root@github.com', '√']
-windowTitle = titles[randint(0,5)]
+titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love', 'root@github.com', '√ running']
+windowTitle = titles[randint(0,4)]
 
 # Canvas Properties
 canvasHeight = 4
@@ -145,6 +145,21 @@ def multiplication():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
+def square():
+    global operator,operatorUsed,operatorDisplay
+    if operatorUsed == True:
+        operatorDisplay = '^'
+        operator = 'square'
+        equals()
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+    else:
+        operatorDisplay = '^'
+        operator = 'square'
+        operatorUsed = True
+        display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+
 # ran when the decimal button is pressed, work in progress
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
@@ -178,6 +193,12 @@ def equals():
     if operator == 'divide':
         answer = float(operationOne) / float(operationTwo)
         display.delete(0, Tkinter.END)
+        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        operationOne = answer
+        operationTwo = ''
+    if operator == 'square':
+        answer = float(operationOne) ** float(operationTwo)
+        display.delete(0,Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
@@ -255,6 +276,10 @@ buttonDivide.grid(row=1, column=3)
 # Multiply Button
 buttonMultiply = Button(root, text='x', command=multiplication)
 buttonMultiply.grid(row=2, column=3)
+
+# Square Button
+buttonSquare = Button(root, text='^', command=square)
+buttonSquare.grid(row=2, column=4)
 
 # Subtract Button
 buttonSubtract = Button(root, text='-', command=subtraction)
