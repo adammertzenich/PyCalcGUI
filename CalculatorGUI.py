@@ -316,7 +316,7 @@ buttonAbout.grid(row=1, column=6)
 # answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
 # Answer Display
-display = Tkinter.Entry(root, width = 18, bg = "white", justify = CENTER)
+display = Tkinter.Entry(root, width = 18, bg = "lightblue", justify = CENTER)
 display.grid(row = 0, column = 0, columnspan = 5)
 
 
