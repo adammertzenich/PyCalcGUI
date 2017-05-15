@@ -2,7 +2,7 @@
 from __future__ import division # Use python 3 division
 from Tkinter import *
 from random import *
-import Tkinter,tkMessageBox
+import Tkinter,tkMessageBox,math
 
 # Meta Data
 Name = 'Calculator Project'
@@ -160,6 +160,12 @@ def power():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
+def sqrt():
+    global operator,operatorUsed,operatorDisplay
+    operatorDisplay = '√'
+    operator = 'sqrt'
+    equals()
+
 # ran when the decimal button is pressed, work in progress
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
@@ -200,6 +206,12 @@ def equals():
         answer = float(operationOne) ** float(operationTwo)
         display.delete(0,Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        operationOne = answer
+        operationTwo = ''
+    if operator == 'sqrt':
+        answer = float(math.sqrt(answer))
+        display.delete(0,Tkinter.END)
+        display.insert(Tkinter.END, operatorDisplay+ " " + str(operationOne) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
 
@@ -280,6 +292,10 @@ buttonMultiply.grid(row=2, column=3)
 # Power Button
 buttonPower = Button(root, text='^', command=power)
 buttonPower.grid(row=2, column=4)
+
+# Sqrt Button
+buttonSqrt = Button(root, text='√', command=sqrt)
+buttonSqrt.grid(row=3, column=4)
 
 # Subtract Button
 buttonSubtract = Button(root, text='-', command=subtraction)
