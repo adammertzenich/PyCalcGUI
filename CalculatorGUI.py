@@ -59,7 +59,7 @@ operationOne = '' # first number to be entered and used
 operationTwo = '' # second number to be entered and used
 answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
-operatorDisplay = ''
+operatorDisplay = '' # Display set to nothing so no operator/other display will be shown
 
 # resets values to default when called in the clear() function
 def reset():
@@ -148,7 +148,7 @@ def multiplication():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
-def power():
+def power(): # ran when using the power button, allows finding exponents (ex. 50^2)
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
         operatorDisplay = '^'
@@ -163,13 +163,13 @@ def power():
         display.delete(0, Tkinter.END)
         display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
-def sqrt():
+def sqrt(): # gets the square root of the answer
     global operator,operatorUsed,operatorDisplay
     operatorDisplay = '√'
     operator = 'sqrt'
     equals()
     
-def pi():
+def pi(): # gets pi
     global operator,operatorUsed,operatorDisplay
     operatorDisplay = 'π'
     operator = 'pi'
