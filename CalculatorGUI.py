@@ -45,8 +45,6 @@ if gridColumn < 0:
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
 
-END = END
-
 # Create and place canvas using settings
 canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor) # Uses variables defined above to create the canvas
 canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
