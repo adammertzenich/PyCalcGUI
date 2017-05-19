@@ -6,6 +6,10 @@ My first large gui project.
 
 ---
 
+The <a href=https://github.com/adammertzenich/PyCalcGUI/tree/dev>DEV BRANCH</a> is updated more often than the master
+
+---
+
 Current Imports:
 
 <p>
