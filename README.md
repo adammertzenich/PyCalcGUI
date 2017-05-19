@@ -6,6 +6,10 @@ My first large gui project.
 
 ---
 
+Dev branch is actively updated and pretty stable, but not really.
+
+---
+
 Current Imports:
 
 <p>
