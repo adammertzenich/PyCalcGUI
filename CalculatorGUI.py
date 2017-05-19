@@ -45,6 +45,8 @@ if gridColumn < 0:
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
 
+END = END
+
 # Create and place canvas using settings
 canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor) # Uses variables defined above to create the canvas
 canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
@@ -76,11 +78,11 @@ def number(num):
     global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
     if operatorUsed:
         operationTwo = int(str(operationTwo) + str(num))
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operationOne = int(str(operationOne) + str(num))
-        display.delete(0, Tkinter.END)
+        display.delete(0, END)
         display.insert(0, str(operationOne))
 
 # ran when add button is pressed
@@ -91,14 +93,14 @@ def addition():
         operator = 'add'
         operatorDisplay = '+'
         equals()
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operator = 'add'
         operatorDisplay = '+'
         operatorUsed = True
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 # ran when the subtract button is pressed
 def subtraction():
@@ -107,14 +109,14 @@ def subtraction():
         operatorDisplay = '-'
         operator = 'subtract'
         equals()
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operatorDisplay = '-'
         operator = 'subtract'
         operatorUsed = True
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 # ran when the divide button is pressed
 def division():
@@ -123,14 +125,14 @@ def division():
         operatorDisplay = '/'
         operator = 'divide'
         equals()
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operatorDisplay = '/'
         operator = 'divide'
         operatorUsed = True
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 # ran when the multiply button is pressed
 def multiplication():
@@ -139,14 +141,14 @@ def multiplication():
         operatorDisplay = '*'
         operator = 'multiple'
         equals()
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operatorDisplay = '*'
         operator = 'multiple'
         operatorUsed = True
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def power(): # ran when using the power button, allows finding exponents (ex. 50^2)
     global operator,operatorUsed,operatorDisplay
@@ -154,14 +156,14 @@ def power(): # ran when using the power button, allows finding exponents (ex. 50
         operatorDisplay = '^'
         operator = 'power'
         equals()
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
         operatorDisplay = '^'
         operator = 'power'
         operatorUsed = True
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def sqrt(): # gets the square root of the answer
     global operator,operatorUsed,operatorDisplay
@@ -189,44 +191,44 @@ def equals():
 
     if operator == 'add':
         answer = float(operationOne) + float(operationTwo)
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'multiple':
         answer = float(operationOne) * float(operationTwo)
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'divide':
         answer = float(operationOne) / float(operationTwo)
-        display.delete(0, Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'power':
         answer = float(operationOne) ** float(operationTwo)
-        display.delete(0,Tkinter.END)
-        display.insert(Tkinter.END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        display.delete(0,END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'sqrt':
         answer = float(math.sqrt(answer))
-        display.delete(0,Tkinter.END)
-        display.insert(Tkinter.END, operatorDisplay+ " " + str(operationOne) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+        display.delete(0,END)
+        display.insert(END, operatorDisplay+ " " + str(operationOne) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
         operationTwo = ''
     if operator == 'pi': # π
         answer = math.pi
-        display.delete(0,Tkinter.END)
-        display.insert(Tkinter.END, answer)
+        display.delete(0,END)
+        display.insert(END, answer)
         operationOne = answer
         operationTwo = ''
 
