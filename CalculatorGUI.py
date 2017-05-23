@@ -8,7 +8,7 @@ import Tkinter,tkMessageBox,math
 Name = 'Calculator Project'
 Description = 'This project is to create a GUI based calculator using Tkinter'
 Repository = 'https://github.com/adammertzenich/PyCalcGUI'
-Version = '2.10.2' # Major, Minor, Patch
+Version = '2.10.3' # Major, Minor, Patch
 Author = 'Adam Mertzenich'
 def about(): # about button fires about() which displays the about message box
     tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
@@ -16,7 +16,8 @@ def about(): # about button fires about() which displays the about message box
 
 # Begin Settings
 titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love', 'root@github.com', 'now with math']
-windowTitle = titles[randint(0,4)]
+#windowTitle = titles[randint(0,4)]
+windowTitle = Name + ' v' + Version
 
 # User Settings
 displayColor = 'lightblue'
