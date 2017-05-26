@@ -2,7 +2,7 @@
 from __future__ import division # Use python 3 division
 from Tkinter import *
 from random import *
-import Tkinter,tkMessageBox,math
+import Tkinter,tkMessageBox,math,redis
 
 # Meta Data
 Name = 'Calculator Project'
@@ -16,7 +16,7 @@ def about(): # about button fires about() which displays the about message box
 
 # Begin Settings
 titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love', 'root@github.com', 'now with math']
-#windowTitle = titles[randint(0,4)]
+#windowTitle = titles[randint(0,len(titles))]
 windowTitle = Name + ' v' + Version
 
 # User Settings
@@ -34,6 +34,11 @@ gridRowspan = 10
 # End Settings
 
 # Begin Setup
+
+# setup redis
+r = redis.StrictRedis(host='localhost', port=6379, db=0) # connect to local redis server
+# r.set('foo','bar')
+
 # Prevent row and rowspan from being certain values
 if gridRowspan <= 0:
     gridRowspan = 1
