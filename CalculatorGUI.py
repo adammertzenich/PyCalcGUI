@@ -48,6 +48,8 @@ if gridColumn < 0:
 root = Tkinter.Tk()
 root.wm_title(windowTitle)
 
+root.resizable(0,0)
+
 # Create and place canvas using settings
 canvas = Tkinter.Canvas(root, height=canvasHeight, width=canvasWidth, background=canvasBGColor) # Uses variables defined above to create the canvas
 canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
@@ -89,6 +91,11 @@ def number(num):
         
 def numSubtract(trashcan):
     global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
+    if operationOne == '':
+        return
+    if operationTwo == '':
+        return
+    
     if operatorUsed == True:
         operationTwo = int(operationTwo / 10)
         display.delete(0, END)
