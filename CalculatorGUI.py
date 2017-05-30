@@ -245,6 +245,10 @@ def equals(event):
         display.insert(END, answer)
         operationOne = answer
         operationTwo = ''
+    if operationOne == 1337:
+        answer = '1337 h4x0r 1nj3c7 (1ien7'
+        display.delete(0,END)
+        display.insert(END, answer)        
 
 # resets to defaults and clears display, runs reset() function
 def clear(trashcan):
