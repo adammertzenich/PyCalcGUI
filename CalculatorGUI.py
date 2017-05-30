@@ -16,8 +16,8 @@ def about(): # about button fires about() which displays the about message box
 
 # Begin Settings
 titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love', 'root@github.com', 'now with math']
-#windowTitle = titles[randint(0,4)]
-windowTitle = Name + ' v' + Version
+windowTitle = titles[randint(0,len(titles))]
+# windowTitle = Name + ' v' + Version
 
 # User Settings
 displayColor = 'lightblue'
