@@ -97,7 +97,7 @@ def numSubtract(trashcan):
         operationOne = int(operationOne / 10)
         display.delete(0, END)
         display.insert(0, str(operationOne))  
-root.bind('<BackSpace>', numSubtract)
+root.bind('<BackSpace>', numSubtract) # backspace to trigger numSubtract function
 
 # ran when add button is pressed
 def addition(trashcan):
