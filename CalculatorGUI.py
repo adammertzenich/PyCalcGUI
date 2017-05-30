@@ -86,6 +86,17 @@ def number(num):
         operationOne = int(str(operationOne) + str(num))
         display.delete(0, END)
         display.insert(0, str(operationOne))
+        
+def numSubtract(trashcan):
+    global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
+    if operatorUsed == True:
+        operationTwo = operationTwo[:-1]
+        display.delete(0, END)
+        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))        
+    else:
+        operationOne = operationOne[:-1]
+        display.delete(0, END)
+        display.insert(0, str(operationOne))        
 
 # ran when add button is pressed
 def addition(trashcan):
