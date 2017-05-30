@@ -16,12 +16,10 @@ def about(): # about button fires about() which displays the about message box
 
 # Begin Settings
 titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love',
-          'root@github.com', 'now with math', '99% from natural flavours',
+          'git guud', 'now with math', '99% from natural flavours',
           'gluten free', 'dairy free', 'free bugs']
 
-windowTitle = titles[randint(0,len(titles))]
-# Static Window Title /w Version:
-# windowTitle = Name + ' v' + Version
+windowTitle = titles[randint(0,len(titles))] # gets random integer between 0 and the length of the titles string
 
 # User Settings
 displayColor = 'lightblue'
