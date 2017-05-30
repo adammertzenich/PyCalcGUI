@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import division # Use python 3 division
 from Tkinter import *
-import Tkinter,tkMessageBox,math,random
+from random import *
+import Tkinter,tkMessageBox,math
 
 # Meta Data
 Name = 'Calculator Project'
