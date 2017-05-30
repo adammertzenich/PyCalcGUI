@@ -250,7 +250,7 @@ buttonDecimal = Button(root, text='.', command=decimal)
 buttonDecimal.grid(row=5, column=1)
 
 # Define buttons 0-9 that execute their respected number() functions
-numberZero = Button(root, text='0', command=lambda: number(0))
+numberZero = Button(root, text='0', command=lambda: number(0)) # lambda used to allow each button to run a function with a specific number
 numberZero.grid(row=5, column=0)
 
 numberOne = Button(root, text='1', command=lambda: number(1))
