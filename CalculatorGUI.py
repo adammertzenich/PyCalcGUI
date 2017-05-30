@@ -8,7 +8,7 @@ import Tkinter,tkMessageBox,math
 Name = 'Calculator Project'
 Description = 'This project is to create a GUI based calculator using Tkinter'
 Repository = 'https://github.com/adammertzenich/PyCalcGUI'
-Version = '2.10.6' # Major, Minor, Patch
+Version = '2.12.0' # Major, Minor, Patch
 Author = 'Adam Mertzenich'
 def about(): # about button fires about() which displays the about message box
     tkMessageBox.showinfo("About", "Project Name: " + Name + "\n" + "Author: " + Author + "\n" + "Description: " + Description + "\n" + "Version: " + Version + "\n" + "Repository: " + Repository)
@@ -19,7 +19,7 @@ titles = ['Calculator Project', '3-- Fork', 'made with h̶a̶t̶e̶ love',
           'git guud', 'now with math', '99% from natural flavours',
           'gluten free', 'dairy free', 'free bugs']
 
-windowTitle = titles[randint(0,len(titles))] # gets random integer between 0 and the length of the titles string
+windowTitle = titles[randint(0,len(titles)-1)] # gets random integer between 0 and the length of the titles string
 
 # User Settings
 displayColor = 'lightblue'
@@ -63,6 +63,7 @@ operationTwo = '' # second number to be entered and used
 answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = '' # Display set to nothing so no operator/other display will be shown
+trashcan = ''
 
 # resets values to default when called in the clear() function
 def reset():
@@ -87,13 +88,13 @@ def number(num):
         display.insert(0, str(operationOne))
 
 # ran when add button is pressed
-def addition():
+def addition(trashcan):
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
         # when operator is used and is used again equals() is executed
         operator = 'add'
         operatorDisplay = '+'
-        equals()
+        equals(trashcan)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
@@ -104,12 +105,12 @@ def addition():
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 # ran when the subtract button is pressed
-def subtraction():
+def subtraction(trashcan):
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
         operatorDisplay = '-'
         operator = 'subtract'
-        equals()
+        equals(trashcan)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
@@ -120,12 +121,12 @@ def subtraction():
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 # ran when the divide button is pressed
-def division():
+def division(trashcan):
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
         operatorDisplay = '/'
         operator = 'divide'
-        equals()
+        equals(trashcan)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
@@ -136,12 +137,12 @@ def division():
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 # ran when the multiply button is pressed
-def multiplication():
+def multiplication(trashcan):
     global operator,operatorUsed,operatorDisplay
     if operatorUsed == True:
         operatorDisplay = '*'
         operator = 'multiple'
-        equals()
+        equals(trashcan)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
@@ -156,7 +157,7 @@ def power(): # ran when using the power button, allows finding exponents (ex. 50
     if operatorUsed == True:
         operatorDisplay = '^'
         operator = 'power'
-        equals()
+        equals(trashcan)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     else:
@@ -170,13 +171,13 @@ def sqrt(): # gets the square root of the answer
     global operator,operatorUsed,operatorDisplay
     operatorDisplay = '√'
     operator = 'sqrt'
-    equals()
+    equals(trashcan)
     
 def pi(): # gets pi
     global operator,operatorUsed,operatorDisplay
     operatorDisplay = 'π'
     operator = 'pi'
-    equals()
+    equals(trashcan)
 
 # ran when the decimal button is pressed, work in progress
 def decimal():
@@ -187,7 +188,7 @@ def decimal():
         print 'work in progress'
 
 # ran when equals button is pressed, edits the display and resets/modifies needed values
-def equals():
+def equals(event):
     global operationOne,operationTwo,answer,operator,operatorDisplay
 
     if operator == 'add':
@@ -234,7 +235,7 @@ def equals():
         operationTwo = ''
 
 # resets to defaults and clears display, runs reset() function
-def clear():
+def clear(trashcan):
     global operatorUsed,operationOne,operationTwo,answer,operator,operatorDisplay
     reset()
     display.delete(0, END)
@@ -252,45 +253,68 @@ buttonDecimal.grid(row=5, column=1)
 # Define buttons 0-9 that execute their respected number() functions
 numberZero = Button(root, text='0', command=lambda: number(0)) # lambda used to allow each button to run a function with a specific number
 numberZero.grid(row=5, column=0)
+root.bind('0', lambda event: number(num=0))
 
 numberOne = Button(root, text='1', command=lambda: number(1))
 numberOne.grid(row=4, column=0)
+root.bind('1', lambda event: number(num=1))
 
 numberTwo = Button(root, text='2', command=lambda: number(2))
 numberTwo.grid(row=4, column=1)
+root.bind('2', lambda event: number(num=2))
 
 numberThree = Button(root, text='3', command=lambda: number(3))
 numberThree.grid(row=4, column=2)
+root.bind('3', lambda event: number(num=3))
 
 numberFour = Button(root, text='4', command=lambda: number(4))
 numberFour.grid(row=3, column=0)
+root.bind('4', lambda event: number(num=4))
 
 numberFive = Button(root, text='5', command=lambda: number(5))
 numberFive.grid(row=3, column=1)
+root.bind('5', lambda event: number(num=5))
 
 numberSix = Button(root, text='6', command=lambda: number(6))
 numberSix.grid(row=3, column=2)
+root.bind('6', lambda event: number(num=6))
 
 numberSeven = Button(root, text='7', command=lambda: number(7))
 numberSeven.grid(row=2, column=0)
+root.bind('7', lambda event: number(num=7))
 
 numberEight = Button(root, text='8', command=lambda: number(8))
 numberEight.grid(row=2, column=1)
+root.bind('8', lambda event: number(num=8))
 
 numberNine = Button(root, text='9', command=lambda: number(9))
 numberNine.grid(row=2, column=2)
+root.bind('9', lambda event: number(num=9))
 
 # Clear Buttom
-buttonClear = Button(root, text='Clear', command=clear)
+buttonClear = Button(root, text='Clear', command=lambda: clear(trashcan))
 buttonClear.grid(row=1, column=0)
+root.bind('c', clear)
+
+# Subtract Button
+buttonSubtract = Button(root, text='-', command=lambda: subtraction(trashcan))
+buttonSubtract.grid(row=3, column=3)
+root.bind('-', subtraction)
+
+# Addition Button
+buttonAdd = Button(root, text='+', command=lambda: addition(trashcan))
+buttonAdd.grid(row=4, column=3)
+root.bind('+', addition)
 
 # Divide Button
-buttonDivide = Button(root, text='÷', command=division)
+buttonDivide = Button(root, text='÷', command=lambda: division(trashcan))
 buttonDivide.grid(row=1, column=3)
+root.bind('/', division)
 
 # Multiply Button
-buttonMultiply = Button(root, text='x', command=multiplication)
+buttonMultiply = Button(root, text='x', command=lambda: multiplication(trashcan))
 buttonMultiply.grid(row=2, column=3)
+root.bind('*', multiplication)
 
 # Power Button
 buttonPower = Button(root, text='^', command=power)
@@ -304,17 +328,11 @@ buttonSqrt.grid(row=3, column=4)
 buttonPi = Button(root, text='π', command=pi)
 buttonPi.grid(row=4, column=4)
 
-# Subtract Button
-buttonSubtract = Button(root, text='-', command=subtraction)
-buttonSubtract.grid(row=3, column=3)
-
-# Addition Button
-buttonAdd = Button(root, text='+', command=addition)
-buttonAdd.grid(row=4, column=3)
-
 # Equals Button
-buttonEquals = Button(root, text='=', command=equals)
+buttonEquals = Button(root, text='=', command=lambda: equals(trashcan))
 buttonEquals.grid(row=5, column=3)
+root.bind('<Return>', equals)
+root.bind('=', equals)
 
 buttonAbout = Button(root, text='About', command=about)
 buttonAbout.grid(row=1, column=6)
