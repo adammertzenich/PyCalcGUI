@@ -8,6 +8,8 @@ My first large gui project.
 
 This is the DEV branch. This is where all of the work gets done. Know that everything may not be working.
 
+Currently this branch is semi-stable.
+
 ---
 
 Current Imports:
