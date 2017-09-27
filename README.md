@@ -6,7 +6,7 @@ My first large gui project.
 
 ---
 
-The <a href=https://github.com/adammertzenich/PyCalcGUI/tree/dev>DEV BRANCH</a> is updated more often than the master
+This is the DEV branch. This is where all of the work gets done. Know that everything may not be working.
 
 ---
 
@@ -18,6 +18,5 @@ Tkinter <br />
 tKMessageBox <br />
 Future Division<br />
 Math<br />
-Time<br />
 
 </p>
