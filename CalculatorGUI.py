@@ -202,9 +202,9 @@ def pi(): # gets pi
 def decimal():
     global operationOne,operationTwo,operatorUsed,operator
     if operatorUsed == False:
-        print 'work in progress'
+        tkMessageBox.showinfo("WIP", "This feature is currently a work in progress.")
     if operatorUsed == True:
-        print 'work in progress'
+        tkMessageBox.showinfo("WIP", "This feature is currently a work in progress.")
 
 # ran when equals button is pressed, edits the display and resets/modifies needed values
 def equals(event):
