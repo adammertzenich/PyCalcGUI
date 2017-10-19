@@ -360,6 +360,19 @@ root.bind('=', equals)
 buttonAbout = Button(root, text='About', command=about)
 buttonAbout.grid(row=1, column=6)
 
+
+
+def debug():
+    global operator, operationOne, operationTwo, answer, operatorDisplay, operatorUsed
+    tkMessageBox.showinfo("Debug", "Variables: " + "\n" + "operator: " + str(operator) + "\n" + "operationOne: " + str(operationOne) + "\n" + "operationTwo: " + str(operationTwo) + "\n" + "answer: " + str(answer) + "\n" + "operatorUsed:" + str(operatorUsed) + "\n" + "operatorDisplay" + str(operatorDisplay))
+    
+    
+# Debug Button
+buttonAbout = Button(root, text='Debug', command=debug)
+buttonAbout.grid(row=2, column=6)
+    
+    
+
 # Create text that will be changed to display the answer (no longer used)
 # answerDisplay = canvas.create_text(100, 100, text='No Answer')
 
