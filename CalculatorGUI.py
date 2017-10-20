@@ -61,7 +61,7 @@ canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 
 operator = '' # default operator to empty string
 operationOne = '' # first number to be entered and used
-operationTwo = '' # second number to be entered and used
+operationTwo = int() # second number to be entered and used
 answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = '' # Display set to nothing so no operator/other display will be shown
@@ -72,8 +72,8 @@ trashcan = ''
 def reset():
     global operator,operationOne,operationTwo,answer,operatorUsed,operatorDisplay,decimalUsed
     operator = '' # default operator to empty string
-    operationOne = '' # first number to be entered and used
-    operationTwo = '' # second number to be entered and used
+    operationOne = int() # first number to be entered and used
+    operationTwo = int() # second number to be entered and used
     answer = '' # answer that will be displayed later after math is done
     operatorUsed = False # defaulting the operatorUsed to False
     operatorDisplay = ''
@@ -88,7 +88,7 @@ def number(num):
             display.delete(0, END)
             display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
         if decimalUsed == False:
-            operationTwo = float(str(operationTwo) + str(num))
+            operationTwo = str(operationTwo) + str(num)
             display.delete(0, END)
             display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
     if operatorUsed == False:
@@ -97,7 +97,7 @@ def number(num):
             display.delete(0, END)
             display.insert(0, str(operationOne))
         if decimalUsed == False:
-            operationOne = float(str(operationOne) + str(num))
+            operationOne = str(operationOne) + str(num)
             display.delete(0, END)
             display.insert(0, str(operationOne))            
         
@@ -223,11 +223,18 @@ def equals():
     global operationOne,operationTwo,answer,operator,operatorDisplay,decimalUsed
 
     if operator == 'add':
-        answer = float(operationOne) + float(operationTwo)
-        display.delete(0, END)
-        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
-        operationOne = answer
-        operationTwo = float()
+        if decimalUsed == True:
+            answer = float(operationOne) + float(operationTwo)
+            display.delete(0, END)
+            display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+            operationOne = answer
+            operationTwo = int()
+        if decimalUsed == False:
+            answer = int(operationOne) + int(operationTwo)
+            display.delete(0, END)
+            display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
+            operationOne = answer
+            operationTwo = int()
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
         display.delete(0, END)
