@@ -65,32 +65,44 @@ operationTwo = '' # second number to be entered and used
 answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = '' # Display set to nothing so no operator/other display will be shown
+decimalUsed = False
 trashcan = ''
 
 # resets values to default when called in the clear() function
 def reset():
-    global operator,operationOne,operationTwo,answer,operatorUsed,operatorDisplay
+    global operator,operationOne,operationTwo,answer,operatorUsed,operatorDisplay,decimalUsed
     operator = '' # default operator to empty string
     operationOne = '' # first number to be entered and used
     operationTwo = '' # second number to be entered and used
     answer = '' # answer that will be displayed later after math is done
     operatorUsed = False # defaulting the operatorUsed to False
     operatorDisplay = ''
+    decimalUsed = False
 
 # ran when a button is pressed to modify the operations
 def number(num):
-    global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
-    if operatorUsed:
-        operationTwo = int(str(operationTwo) + str(num))
-        display.delete(0, END)
-        display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
-    else:
-        operationOne = int(str(operationOne) + str(num))
-        display.delete(0, END)
-        display.insert(0, str(operationOne))
+    global operationOne,operationTwo,operatorUsed,operator,operatorDisplay,decimalUsed
+    if operatorUsed == True:
+        if decimalUsed == True:
+            operationTwo = float(str(operationTwo) + str(num))
+            display.delete(0, END)
+            display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+        if decimalUsed == False:
+            operationTwo = float(str(operationTwo) + str(num))
+            display.delete(0, END)
+            display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
+    if operatorUsed == False:
+        if decimalUsed == True:
+            operationOne = float(str(operationOne) + str(num))
+            display.delete(0, END)
+            display.insert(0, str(operationOne))
+        if decimalUsed == False:
+            operationOne = float(str(operationOne) + str(num))
+            display.delete(0, END)
+            display.insert(0, str(operationOne))            
         
 def numSubtract():
-    global operationOne,operationTwo,operatorUsed,operator,operatorDisplay
+    global operationOne,operationTwo,operatorUsed,operator,operatorDisplay,decimalUsed
     if operationOne == '':
         return
     if operationTwo == '':
@@ -108,7 +120,7 @@ root.bind('<BackSpace>', numSubtract) # backspace to trigger numSubtract functio
 
 # ran when add button is pressed
 def addition():
-    global operator,operatorUsed,operatorDisplay
+    global operator,operatorUsed,operatorDisplay,decimalUsed
     if operatorUsed == True:
         # when operator is used and is used again equals() is executed
         operator = 'add'
@@ -125,7 +137,7 @@ def addition():
 
 # ran when the subtract button is pressed
 def subtraction():
-    global operator,operatorUsed,operatorDisplay
+    global operator,operatorUsed,operatorDisplay,decimalUsed
     if operatorUsed == True:
         operatorDisplay = '-'
         operator = 'subtract'
@@ -141,7 +153,7 @@ def subtraction():
 
 # ran when the divide button is pressed
 def division():
-    global operator,operatorUsed,operatorDisplay
+    global operator,operatorUsed,operatorDisplay,decimalUsed
     if operatorUsed == True:
         operatorDisplay = '/'
         operator = 'divide'
@@ -157,7 +169,7 @@ def division():
 
 # ran when the multiply button is pressed
 def multiplication():
-    global operator,operatorUsed,operatorDisplay
+    global operator,operatorUsed,operatorDisplay,decimalUsed
     if operatorUsed == True:
         operatorDisplay = '*'
         operator = 'multiple'
@@ -172,7 +184,7 @@ def multiplication():
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def power(): # ran when using the power button, allows finding exponents (ex. 50^2)
-    global operator,operatorUsed,operatorDisplay
+    global operator,operatorUsed,operatorDisplay,decimalUsed
     if operatorUsed == True:
         operatorDisplay = '^'
         operator = 'power'
@@ -187,20 +199,20 @@ def power(): # ran when using the power button, allows finding exponents (ex. 50
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo))
 
 def sqrt(): # gets the square root of the answer
-    global operator,operatorUsed,operatorDisplay
+    global operator,operatorUsed,operatorDisplay,decimalUsed
     operatorDisplay = '√'
     operator = 'sqrt'
     equals()
     
 def pi(): # gets pi
-    global operator,operatorUsed,operatorDisplay
+    global operator,operatorUsed,operatorDisplay,decimalUsed
     operatorDisplay = 'π'
     operator = 'pi'
     equals()
 
 # ran when the decimal button is pressed, work in progress
 def decimal():
-    global operationOne,operationTwo,operatorUsed,operator
+    global operationOne,operationTwo,operatorUsed,operator,decimalUsed
     if operatorUsed == False:
         tkMessageBox.showinfo("WIP", "This feature is currently a work in progress.")
     if operatorUsed == True:
@@ -208,50 +220,50 @@ def decimal():
 
 # ran when equals button is pressed, edits the display and resets/modifies needed values
 def equals():
-    global operationOne,operationTwo,answer,operator,operatorDisplay
+    global operationOne,operationTwo,answer,operator,operatorDisplay,decimalUsed
 
     if operator == 'add':
         answer = float(operationOne) + float(operationTwo)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = ''
+        operationTwo = float()
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = ''
+        operationTwo = float()
     if operator == 'multiple':
         answer = float(operationOne) * float(operationTwo)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = ''
+        operationTwo = float()
     if operator == 'divide':
         answer = float(operationOne) / float(operationTwo)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = ''
+        operationTwo = float()
     if operator == 'power':
         answer = float(operationOne) ** float(operationTwo)
         display.delete(0,END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = ''
+        operationTwo = float()
     if operator == 'sqrt':
         answer = float(math.sqrt(answer))
         display.delete(0,END)
         display.insert(END, operatorDisplay+ " " + str(operationOne) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = ''
+        operationTwo = float()
     if operator == 'pi': # π
         answer = math.pi
         display.delete(0,END)
         display.insert(END, answer)
         operationOne = answer
-        operationTwo = ''
+        operationTwo = float()
     if operationOne == 1337:
         answer = '1337 h4x0r 1nj3c7 (1ien7'
         display.delete(0,END)
@@ -259,7 +271,7 @@ def equals():
 
 # resets to defaults and clears display, runs reset() function
 def clear():
-    global operatorUsed,operationOne,operationTwo,answer,operator,operatorDisplay
+    global operatorUsed,operationOne,operationTwo,answer,operator,operatorDisplay,decimalUsed
     reset()
     display.delete(0, END)
     operatorUsed = False
@@ -361,10 +373,10 @@ buttonAbout = Button(root, text='About', command=about)
 buttonAbout.grid(row=1, column=6)
 
 
-
+# used to display variables
 def debug():
-    global operator, operationOne, operationTwo, answer, operatorDisplay, operatorUsed
-    tkMessageBox.showinfo("Debug", "Variables: " + "\n" + "operator: " + str(operator) + "\n" + "operationOne: " + str(operationOne) + "\n" + "operationTwo: " + str(operationTwo) + "\n" + "answer: " + str(answer) + "\n" + "operatorUsed:" + str(operatorUsed) + "\n" + "operatorDisplay" + str(operatorDisplay))
+    global operator, operationOne, operationTwo, answer, operatorDisplay, operatorUsed, decimalUsed
+    tkMessageBox.showinfo("Debug", "Variables: " + "\n" + "operator " + str(type(operator)) + ": " + str(operator) + "\n" + "operationOne " + str(type(operationOne)) + ": " + str(operationOne) + "\n" + "operationTwo " + str(type(operationTwo)) + ": " + str(operationTwo) + "\n" + "answer " + str(type(answer)) + ": " + str(answer) + "\n" + "operatorUsed " + str(type(operatorUsed)) + ": " + str(operatorUsed) + "\n" + "operatorDisplay " + str(type(operatorDisplay)) + ": " + str(operatorDisplay) + "\n" + "decimalUsed " + str(type(decimalUsed)) + ": " + str(decimalUsed))
     
     
 # Debug Button
