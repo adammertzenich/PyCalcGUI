@@ -62,7 +62,7 @@ canvas.grid(row=gridRowspan, column=gridColumn, rowspan=gridRowspan)
 
 operator = '' # default operator to empty string
 operationOne = '' # first number to be entered and used
-operationTwo = int() # second number to be entered and used
+operationTwo = '' # second number to be entered and used
 answer = '' # answer that will be displayed later after math is done
 operatorUsed = False # defaulting the operatorUsed to False
 operatorDisplay = '' # Display set to nothing so no operator/other display will be shown
@@ -73,8 +73,8 @@ trashcan = ''
 def reset():
     global operator,operationOne,operationTwo,answer,operatorUsed,operatorDisplay,decimalUsed
     operator = '' # default operator to empty string
-    operationOne = int() # first number to be entered and used
-    operationTwo = int() # second number to be entered and used
+    operationOne = '' # first number to be entered and used
+    operationTwo = '' # second number to be entered and used
     answer = '' # answer that will be displayed later after math is done
     operatorUsed = False # defaulting the operatorUsed to False
     operatorDisplay = ''
@@ -229,49 +229,49 @@ def equals():
             display.delete(0, END)
             display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
             operationOne = answer
-            operationTwo = int()
+            operationTwo = ''
         if decimalUsed == False:
             answer = int(operationOne) + int(operationTwo)
             display.delete(0, END)
             display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
             operationOne = answer
-            operationTwo = int()
+            operationTwo = ''
     if operator == 'subtract':
         answer = float(operationOne) - float(operationTwo)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = float()
+        operationTwo = ''
     if operator == 'multiple':
         answer = float(operationOne) * float(operationTwo)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = float()
+        operationTwo = ''
     if operator == 'divide':
         answer = float(operationOne) / float(operationTwo)
         display.delete(0, END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = float()
+        operationTwo = ''
     if operator == 'power':
         answer = float(operationOne) ** float(operationTwo)
         display.delete(0,END)
         display.insert(END, str(operationOne)+ " " + operatorDisplay + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = float()
+        operationTwo = ''
     if operator == 'sqrt':
         answer = float(math.sqrt(answer))
         display.delete(0,END)
         display.insert(END, operatorDisplay+ " " + str(operationOne) + " " + str(operationTwo) + " " + "=" + " " + str(answer))
         operationOne = answer
-        operationTwo = float()
+        operationTwo = ''
     if operator == 'pi': # π
         answer = math.pi
         display.delete(0,END)
         display.insert(END, answer)
         operationOne = answer
-        operationTwo = float()
+        operationTwo = ''
     if operationOne == 1337:
         answer = '1337 h4x0r 1nj3c7 (1ien7'
         display.delete(0,END)
